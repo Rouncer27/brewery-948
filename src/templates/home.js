@@ -1,10 +1,14 @@
 import React from "react"
 
+import Layout from "../components/Layout"
+import Seo from "../components/Seo"
+
 const Home = () => {
   return (
-    <div>
+    <Layout>
+      <Seo title="Home Page" />
       <h1>Home</h1>
-    </div>
+    </Layout>
   )
 }
 
