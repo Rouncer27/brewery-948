@@ -1,7 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { colors, medWrapper, standardWrapper } from "../../../styles/helpers"
-
 import HeaderMenuMain from "./HeaderMenuMain"
 
 const HeaderNav = () => {
