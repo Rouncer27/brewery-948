@@ -1,12 +1,12 @@
 import { colors } from "./index"
-import { fonts, fontSizer } from "./index"
+import { fontSizer } from "./index"
 
 export const Nav1Base = `
-  ${fontSizer(1.4, 1.6, 76.8, 150, 1.8)};
+  ${fontSizer(1.2, 1.4, 76.8, 150, 1.8)};
   font-weight: normal;
-  font-stretch: condensed;
+  font-stretch: normal;
   font-style: normal;
-  line-height: 1.38;
+  line-height: 1.57;
   letter-spacing: normal;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -24,19 +24,9 @@ export const Nav1White = `
   color: ${colors.white};
 `
 
-export const Nav1Slate = `
+export const Nav1Black = `
   ${Nav1Base};
-  color: ${colors.colorShad};
-`
-
-export const Nav1Green = `
-  ${Nav1Base};
-  color: ${colors.colorSecondary};
-`
-
-export const Nav1Blue = `
-  ${Nav1Base};
-  color: ${colors.colorPrimary};
+  color: ${colors.black};
 `
 
 export const Nav2Base = `

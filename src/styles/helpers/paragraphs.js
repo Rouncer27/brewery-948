@@ -1,14 +1,14 @@
 import { colors } from "./index"
-import { fonts, fontSizer } from "./index"
+import { fontSizer } from "./index"
 import { css } from "styled-components"
 
 // Body copy ONE //
 export const B1Base = css`
-  ${fontSizer(1.6, 2, 76.8, 150, 1.8)};
+  ${fontSizer(1.6, 2.1, 76.8, 150, 1.8)};
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.5;
+  line-height: 1.48;
   letter-spacing: normal;
 `
 

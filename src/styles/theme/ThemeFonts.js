@@ -1,5 +1,5 @@
 const themeFonts = {
-  fontPrimary: "Georama",
+  fontPrimary: "Georama, Tahoma, Verdana, Geneva",
   fontAwesome: "FontAwesome",
   baseLineHeight: "1.5",
 }

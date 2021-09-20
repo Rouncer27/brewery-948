@@ -1,11 +1,11 @@
-import * as React from "react"
-import PropTypes from "prop-types"
+import React from "react"
 import { ThemeProvider } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 
 import theme from "../styles/theme/Theme"
 import GlobalStyle from "../styles/global/Golbal"
 import Header from "./Header"
+import Footer from "./Footer"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -23,21 +23,14 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-        <div>
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.com">Gatsby</a>
-          </footer>
-        </div>
+        <main id="main" role="main">
+          {children}
+        </main>
+
+        <Footer />
       </ThemeProvider>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout
