@@ -9,7 +9,12 @@ const MobileNavItem = ({ item }) => {
   const slug = item.url
     .split("/")
     .filter(item => item !== "")
+    .filter(item => item !== "https:")
+    .filter(item => item !== "http:")
+    .filter(item => item !== process.env.GATSBY_WORDPRESS_URL)
     .join("/")
+
+  console.log("HERES THE SLUG", slug)
 
   const [subActive, setSubActive] = useState(false)
 
