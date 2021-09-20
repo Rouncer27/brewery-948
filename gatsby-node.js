@@ -4,15 +4,15 @@ exports.createPages = async ({ graphql, actions }) => {
   try {
     const { data } = await graphql(`
       {
-        pages: allWordpressPage {
+        pages: allWpPage {
           edges {
             node {
-              slug
               template {
                 templateName
               }
-              wordpress_id
-              path
+              slug
+              databaseId
+              uri
             }
           }
         }
@@ -31,7 +31,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: `/${node.slug}`,
           component: path.resolve(`./src/templates/about.js`),
           context: {
-            id: node.wordpress_id,
+            id: node.databaseId,
           },
         })
       } else if (node.template.templateName === "Home") {
@@ -39,7 +39,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: `/${node.slug}`,
           component: path.resolve(`./src/templates/home.js`),
           context: {
-            id: node.wordpress_id,
+            id: node.databaseId,
           },
         })
       } else if (node.template.templateName === "Default") {
@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: `/${node.slug}`,
           component: path.resolve(`./src/templates/defaultPage.js`),
           context: {
-            id: node.wordpress_id,
+            id: node.databaseId,
           },
         })
       }
