@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React, { useState } from "react"
 import styled from "styled-components"
-import { colors, Btn1Green, Nav1Black } from "../../../styles/helpers"
+import { colors, Btn1Green, Nav1White } from "../../../styles/helpers"
 
 import HeaderSubMenu from "./HeaderSubMenu"
 
@@ -51,7 +51,6 @@ const HeaderNavItem = ({ item }) => {
 }
 
 const HeaderNavItemStyled = styled.li`
-  flex-grow: 1;
   padding: 0 1rem;
   position: relative;
   align-self: center;
@@ -59,32 +58,27 @@ const HeaderNavItemStyled = styled.li`
 
   a,
   button {
-    ${Nav1Black};
+    ${Nav1White};
     margin: 0 auto;
-    border-top: 0.2rem solid ${colors.colorSecondary};
-    border-bottom: 0.2rem solid ${colors.colorSecondary};
-    border-color: transparent;
+    padding: 0 3rem;
     text-transform: uppercase;
     text-align: center;
     transition: all 0.35s ease-in-out;
 
     &:hover {
-      border-color: ${colors.colorSecondary};
-      color: ${colors.colorAccent};
+      color: ${colors.colorSecondary};
     }
 
     &[aria-current="page"] {
-      color: ${colors.colorAccent};
-      border-color: ${colors.colorSecondary};
+      color: ${colors.colorSecondary};
 
       &:hover {
-        color: ${colors.colorAccent};
         cursor: default;
       }
     }
 
     &:focus {
-      outline: 0.4rem solid #d57b2e;
+      outline: 0.4rem solid ${colors.colorSecondary};
       transition: all 0.35s ease-in-out;
     }
   }

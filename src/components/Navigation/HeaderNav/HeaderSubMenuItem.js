@@ -42,7 +42,7 @@ const HeaderSubMenuItemStyled = styled.li`
     }
 
     &:hover {
-      color: ${colors.colorTertiary};
+      color: ${colors.colorPrimary};
     }
   }
 `

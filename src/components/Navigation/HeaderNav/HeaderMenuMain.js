@@ -1,9 +1,10 @@
 import React from "react"
 
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 import HeaderNavItem from "./HeaderNavItem"
+import { colors, Nav1White } from "../../../styles/helpers"
 
 const getData = graphql`
   {
@@ -43,6 +44,9 @@ const HeaderMenu = () => {
           {navItemsWithSubs.map(item => {
             return <HeaderNavItem key={item.id} item={item} top={true} />
           })}
+          <HighlightedLink>
+            <Link to="/taproom">Visit Our Taproom</Link>
+          </HighlightedLink>
         </ul>
       </HeaderNavStyled>
     ) : null
@@ -55,23 +59,29 @@ const HeaderNavStyled = styled.nav`
   width: 100%;
 
   @media (min-width: 768px) {
-    display: flex;
-    align-items: center;
-    align-self: center;
-    flex-wrap: wrap;
+    display: block;
   }
 
   .mainNavWrapper {
     display: flex;
     align-items: center;
     align-self: center;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     width: 100%;
 
     @media (min-width: 1025px) {
-      justify-content: space-evenly;
       margin-top: 0;
     }
+  }
+`
+
+const HighlightedLink = styled.li`
+  background-color: ${colors.colorSecondary};
+  padding: 2rem 4rem;
+
+  a {
+    ${Nav1White};
+    text-transform: uppercase;
   }
 `
 
