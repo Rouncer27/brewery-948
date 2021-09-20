@@ -1,8 +1,12 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { colors, Nav1White } from "../styles/helpers"
+
+import Twitter from "./Icons/Twitter"
+import Facebook from "./Icons/Facebook"
+import Instagram from "./Icons/Instagram"
 
 const getData = graphql`
   {
@@ -40,8 +44,14 @@ const Footer = () => {
     data.footerData.acfOptionsSiteWideSettings.acfSiteWideSettings.footerLogo
       .altText
 
-  const { address, hoursOfOperation, stayInTheKnow } =
-    data.footerData.acfOptionsSiteWideSettings.acfSiteWideSettings
+  const {
+    address,
+    hoursOfOperation,
+    stayInTheKnow,
+    instagramUrl,
+    facebookUrl,
+    twitterUrl,
+  } = data.footerData.acfOptionsSiteWideSettings.acfSiteWideSettings
 
   console.log("FOOTER DATA", data)
 
@@ -60,11 +70,61 @@ const Footer = () => {
           </div>
           <div dangerouslySetInnerHTML={{ __html: hoursOfOperation }} />
         </div>
-        <div className="footer-section">
+        <div className="footer-section footer-double">
           <div>
             <h3>Stay in the kown with 948 Brewing Company</h3>
           </div>
           <div dangerouslySetInnerHTML={{ __html: stayInTheKnow }} />
+        </div>
+        <div className="footer-section footer-double footer-social">
+          <ul className="socialIcons">
+            <StyledIcon>
+              <a
+                title="Follow us on Facebook - Link will open in new window"
+                target="_blank"
+                rel="noreferrer"
+                href={facebookUrl}
+              >
+                <i>
+                  <Facebook />
+                  <span className="visuallyhidden">Facebook</span>
+                </i>
+              </a>
+            </StyledIcon>
+
+            <StyledIcon>
+              <a
+                title="Follow us on Instagram - Link will open in new window"
+                target="_blank"
+                rel="noreferrer"
+                href={instagramUrl}
+              >
+                <i>
+                  <Instagram />
+                  <span className="visuallyhidden">Instagram</span>
+                </i>
+              </a>
+            </StyledIcon>
+
+            <StyledIcon>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                title="Follow us on Twitter - Link will open in new window"
+                href={twitterUrl}
+              >
+                <i>
+                  <Twitter />
+                  <span className="visuallyhidden">Twitter</span>
+                </i>
+              </a>
+            </StyledIcon>
+            <li className="footer-logo">
+              <Link to="/">
+                <GatsbyImage image={image} alt={logoAlt} layout="fixed" />
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
       <div className="footer-copy">
@@ -84,7 +144,7 @@ const StyledFooter = styled.footer`
   .wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 0 auto;
     padding: 3.5rem 5rem;
   }
@@ -93,6 +153,7 @@ const StyledFooter = styled.footer`
     width: 100%;
     max-width: 96rem;
     margin: 0 auto;
+    padding: 0 2rem 2rem;
     text-align: center;
 
     p,
@@ -103,8 +164,25 @@ const StyledFooter = styled.footer`
   }
 
   .footer-section {
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(100% / 3);
+      margin: 2rem auto;
+      padding: 1rem;
+
+      &.footer-social {
+        width: calc(100% / 2);
+      }
+    }
+
     @media (min-width: 1025px) {
-      width: calc(100% / 4);
+      width: calc(100% / 6);
+      margin: 0;
+
+      &.footer-double {
+        width: calc(100% / 3);
+      }
     }
 
     h3 {
@@ -112,10 +190,102 @@ const StyledFooter = styled.footer`
       margin-bottom: 2.5rem;
       font-weight: 600;
       text-transform: uppercase;
+
+      &:hover {
+        color: ${colors.white};
+        cursor: initial;
+      }
     }
 
     p {
       ${Nav1White};
+
+      &:hover {
+        color: ${colors.white};
+        cursor: initial;
+      }
+    }
+  }
+
+  .footer-social {
+    align-self: center;
+
+    .socialIcons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+
+      li:first-of-type {
+        margin-left: 0 !important;
+      }
+    }
+
+    .footer-logo {
+      display: inline-block;
+      width: 15rem;
+    }
+  }
+`
+
+const StyledIcon = styled.li`
+  display: inline-block;
+  margin-right: 1rem;
+  margin-left: 1rem;
+
+  a {
+    display: block;
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+
+    @media (min-width: 768px) {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+    @media (min-width: 1025px) {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    &:focus {
+      outline: 0.4rem solid #003b49;
+      transition: outline-width 0.35s ease-in-out;
+    }
+
+    .visuallyhidden {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+
+    svg {
+      display: block;
+      width: 4rem;
+      height: 4rem;
+      margin: auto;
+      transition: all 0.3s ease-out;
+      fill: ${colors.white};
+
+      @media (min-width: 768px) {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+      @media (min-width: 1025px) {
+        width: 4rem;
+        height: 4rem;
+      }
+
+      &:hover {
+        fill: ${colors.colorAccent};
+      }
     }
   }
 `

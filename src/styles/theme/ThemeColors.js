@@ -4,7 +4,7 @@ const themeColors = {
   colorTertiary: "#ffb576",
   colorAccent: "#f43e35",
   colorShad: "#42454a",
-  colorAlt: "#42454a",
+  colorAlt: "#242424",
   white: "rgba(255,255,255, 1)",
   grey: "rgba(226,232,233, 1)",
   greyMed: "rgba(120,119,124, 1)",
