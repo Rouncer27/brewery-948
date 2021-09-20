@@ -1,13 +1,17 @@
+const dotenv = require("dotenv")
+dotenv.config({ path: ".env" })
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `948 Brewery`,
+    description: `948 Brewery`,
+    author: `@switchback4ever`,
+    siteUrl: `https://switchbackcreative.ca`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -29,6 +33,12 @@ module.exports = {
         // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: "gatsby-source-wordpress",
+      options: {
+        url: process.env.WORDPRESS_URL,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
