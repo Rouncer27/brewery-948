@@ -6,12 +6,17 @@ import Seo from "../components/Seo"
 import TempHome from "../components/Templates/TempHome"
 
 const IndexPage = props => {
-  const { hero, direction, taproom } = props.data
+  const { hero, direction, taproom, locations } = props.data
 
   return (
     <Layout>
       <Seo title="Home" />
-      <TempHome hero={hero} direction={direction} taproom={taproom} />
+      <TempHome
+        hero={hero}
+        direction={direction}
+        taproom={taproom}
+        locations={locations}
+      />
     </Layout>
   )
 }
@@ -131,6 +136,19 @@ export const homeQuery = graphql`
                   gatsbyImageData(width: 2000)
                 }
               }
+            }
+          }
+        }
+      }
+    }
+
+    locations: wpPage(slug: { eq: "home" }) {
+      template {
+        ... on WpTemplate_Home {
+          homeTemplate {
+            locations {
+              name
+              website
             }
           }
         }

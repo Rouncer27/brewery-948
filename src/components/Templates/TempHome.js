@@ -3,8 +3,9 @@ import React from "react"
 import Hero from "../PageComponents/Hero"
 import DirectionSection from "../PageComponents/DirectionSection"
 import VisitTaproom from "../PageComponents/VisitTaproom"
+import FindUs from "../PageComponents/FindUs"
 
-const TempHome = ({ hero, direction, taproom }) => {
+const TempHome = ({ hero, direction, taproom, locations }) => {
   return (
     <>
       <Hero
@@ -22,6 +23,7 @@ const TempHome = ({ hero, direction, taproom }) => {
         seasonalSlug={direction.template.homeTemplate.seasonalFeatureSlug}
       />
       <VisitTaproom taproom={taproom.template.homeTemplate.taproomImage} />
+      <FindUs locations={locations} />
     </>
   )
 }
