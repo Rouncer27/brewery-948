@@ -2,7 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import { colors } from "../../styles/helpers"
+import { colors, H1White } from "../../styles/helpers"
+import { Link } from "gatsby"
 
 const DirectionSection = ({
   ourStory,
@@ -41,7 +42,12 @@ const DirectionSection = ({
     <StyledSection>
       <div className="top-sec">
         <div className="top-sec__left">
-          <div className="dir-img">
+          <div className="our-story">
+            <h2>
+              <Link to="/our-story">Our Story</Link>
+            </h2>
+          </div>
+          <div>
             <GatsbyImage
               image={ourStorySrc}
               alt={ourStoryAlt}
@@ -52,7 +58,12 @@ const DirectionSection = ({
         </div>
         <div className="top-sec__right">
           <div className="top-sec__right--top">
-            <div className="dir-img">
+            <div className="our-beers">
+              <h3>
+                <Link to="/our-beers">Our Beers</Link>
+              </h3>
+            </div>
+            <div>
               <GatsbyImage
                 image={ourBeersSrc}
                 alt={ourBeersAlt}
@@ -62,7 +73,7 @@ const DirectionSection = ({
             </div>
           </div>
           <div className="top-sec__right--bot top-sec__right--bot--left">
-            <div className="dir-img">
+            <div>
               <GatsbyImage
                 image={seasonalFeatureSrc}
                 alt={seasonalFeatureAlt}
@@ -72,7 +83,7 @@ const DirectionSection = ({
             </div>
           </div>
           <div className="top-sec__right--bot top-sec__right--bot--right">
-            <div className="dir-img">
+            <div>
               <GatsbyImage
                 image={newsEventsSrc}
                 alt={newsEventsAlt}
@@ -201,6 +212,35 @@ const StyledSection = styled.section`
         margin-right: 2rem;
         height: auto;
       }
+
+      .our-story {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        padding: 6.6rem;
+        transform: translate(0%, -50%);
+        background-color: rgba(244, 62, 53, 0.65);
+        text-align: center;
+        z-index: 100;
+
+        h2 {
+          margin: 0;
+        }
+
+        a {
+          ${H1White};
+          display: block;
+          padding: 4rem 6rem;
+          border: solid 0.4rem ${colors.white};
+          text-transform: uppercase;
+
+          &:hover {
+            background-color: ${colors.white};
+            color: ${colors.black};
+          }
+        }
+      }
     }
 
     &__right {
@@ -225,6 +265,33 @@ const StyledSection = styled.section`
 
         @media (min-width: 768px) {
           height: calc(50% - 2rem);
+        }
+
+        .our-beers {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          transform: translate(0%, -50%);
+          background-color: rgba(36, 36, 36, 0.65);
+          text-align: center;
+          z-index: 100;
+
+          h3 {
+            margin: 0;
+          }
+
+          a {
+            ${H1White};
+            display: block;
+            width: 100%;
+            padding: 2.5rem;
+            text-transform: uppercase;
+
+            &:hover {
+              color: ${colors.colorSecondary};
+            }
+          }
         }
       }
 
