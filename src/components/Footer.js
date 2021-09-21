@@ -53,8 +53,6 @@ const Footer = () => {
     twitterUrl,
   } = data.footerData.acfOptionsSiteWideSettings.acfSiteWideSettings
 
-  console.log("FOOTER DATA", data)
-
   return (
     <StyledFooter>
       <div className="wrapper">
