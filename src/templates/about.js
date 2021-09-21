@@ -6,7 +6,7 @@ import Seo from "../components/Seo"
 import TempAbout from "../components/Templates/TempAbout"
 
 const About = props => {
-  const { hero, story, founders, imageRow, nameStory } = props.data
+  const { hero, story, founders, imageRow, nameStory, linkImage } = props.data
   return (
     <Layout>
       <Seo title="About Page" />
@@ -16,6 +16,7 @@ const About = props => {
         founders={founders}
         imageRow={imageRow}
         nameStory={nameStory}
+        linkImage={linkImage}
       />
     </Layout>
   )
@@ -116,6 +117,43 @@ export const aboutTempQuery = graphql`
             nameStoryTop
             nameStoryBottom
             nameStorySlug
+          }
+        }
+      }
+    }
+
+    linkImage: wpPage(id: { eq: $id }) {
+      template {
+        ... on WpTemplate_About {
+          aboutTemplate {
+            ourBeersLink {
+              altText
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
+            eventsNewsLink {
+              altText
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
+
+            taproomLink {
+              altText
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
           }
         }
       }

@@ -5,9 +5,16 @@ import OurStory from "../PageComponents/About/OurStory"
 import Founders from "../PageComponents/About/Founders"
 import ImageRow from "../PageComponents/About/ImageRow"
 import NameStory from "../PageComponents/About/NameStory"
+import LinksRow from "../PageComponents/About/LinksRow"
 
-const TempAbout = ({ hero, story, founders, imageRow, nameStory }) => {
-  console.log(nameStory)
+const TempAbout = ({
+  hero,
+  story,
+  founders,
+  imageRow,
+  nameStory,
+  linkImage,
+}) => {
   return (
     <>
       <Hero
@@ -28,6 +35,11 @@ const TempAbout = ({ hero, story, founders, imageRow, nameStory }) => {
         top={nameStory.template.aboutTemplate.nameStoryTop}
         bot={nameStory.template.aboutTemplate.nameStoryBottom}
         slug={nameStory.template.aboutTemplate.nameStorySlug}
+      />
+      <LinksRow
+        beer={linkImage.template.aboutTemplate.ourBeersLink}
+        events={linkImage.template.aboutTemplate.eventsNewsLink}
+        taproom={linkImage.template.aboutTemplate.taproomLink}
       />
     </>
   )
