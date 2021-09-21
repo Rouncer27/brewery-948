@@ -6,11 +6,11 @@ import Seo from "../components/Seo"
 import TempAbout from "../components/Templates/TempAbout"
 
 const About = props => {
-  const { hero } = props.data
+  const { hero, story } = props.data
   return (
     <Layout>
       <Seo title="About Page" />
-      <TempAbout hero={hero} />
+      <TempAbout hero={hero} story={story} />
     </Layout>
   )
 }
@@ -43,6 +43,17 @@ export const aboutTempQuery = graphql`
                 }
               }
             }
+          }
+        }
+      }
+    }
+
+    story: wpPage(id: { eq: $id }) {
+      template {
+        ... on WpTemplate_About {
+          aboutTemplate {
+            ourStoryTop
+            ourStoryBottom
           }
         }
       }
