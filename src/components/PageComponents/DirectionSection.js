@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import { colors, H1White } from "../../styles/helpers"
+import { colors, H1White, H3White } from "../../styles/helpers"
 import { Link } from "gatsby"
 
 const DirectionSection = ({
@@ -73,6 +73,14 @@ const DirectionSection = ({
             </div>
           </div>
           <div className="top-sec__right--bot top-sec__right--bot--left">
+            <div className="seasonal-feature">
+              <h3>
+                <Link to={`/${seasonalSlug}`}>
+                  <span>Seasonal Feature</span>{" "}
+                  <span>&#43; Community Collaborations</span>
+                </Link>
+              </h3>
+            </div>
             <div>
               <GatsbyImage
                 image={seasonalFeatureSrc}
@@ -83,6 +91,13 @@ const DirectionSection = ({
             </div>
           </div>
           <div className="top-sec__right--bot top-sec__right--bot--right">
+            <div className="news-events">
+              <h3>
+                <Link to={`/news-and-events`}>
+                  <span>News &#43; Events</span>
+                </Link>
+              </h3>
+            </div>
             <div>
               <GatsbyImage
                 image={newsEventsSrc}
@@ -96,20 +111,38 @@ const DirectionSection = ({
       </div>
       <div className="bot-sec">
         <div className="bot-sec__left">
+          <div className="shop-gear">
+            <h3>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://948-brewing-company.square.site/"
+              >
+                <span>Shop Beer &#43; Gear</span>
+              </a>
+            </h3>
+          </div>
           <div>
             <GatsbyImage
-              image={nowPouringSrc}
-              alt={nowPouringAlt}
+              image={shopGearSrc}
+              alt={shopGearAlt}
               layout="fullWidth"
               formats={["auto", "webp", "avif"]}
             />
           </div>
         </div>
         <div className="bot-sec__right">
+          <div className="now-pouring">
+            <h3>
+              <a target="_blank" rel="noreferrer" href="https://948brewing.ca/">
+                Now Pouring
+              </a>
+            </h3>
+          </div>
           <div>
             <GatsbyImage
-              image={shopGearSrc}
-              alt={shopGearAlt}
+              image={nowPouringSrc}
+              alt={nowPouringAlt}
               layout="fullWidth"
               formats={["auto", "webp", "avif"]}
             />
@@ -163,6 +196,40 @@ const StyledSection = styled.section`
         margin-right: 1rem;
         margin-bottom: 0;
       }
+
+      .shop-gear {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(36, 36, 36, 0.5);
+        text-align: center;
+        z-index: 100;
+
+        h3 {
+          margin: 0;
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          justify-content: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          width: 100%;
+          padding: 2.5rem;
+
+          span {
+            ${H3White};
+            text-transform: uppercase;
+          }
+        }
+      }
     }
 
     &__right {
@@ -180,6 +247,33 @@ const StyledSection = styled.section`
         height: 100%;
         margin-top: 0;
         margin-left: 1rem;
+      }
+
+      .now-pouring {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        transform: translate(0%, -50%);
+        background-color: rgba(36, 36, 36, 0.65);
+        text-align: center;
+        z-index: 100;
+
+        h3 {
+          margin: 0;
+        }
+
+        a {
+          ${H1White};
+          display: block;
+          width: 100%;
+          padding: 2.5rem;
+          text-transform: uppercase;
+
+          &:hover {
+            color: ${colors.colorSecondary};
+          }
+        }
       }
     }
   }
@@ -316,6 +410,54 @@ const StyledSection = styled.section`
             height: calc(50%);
             margin-bottom: 0;
           }
+
+          .seasonal-feature {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(36, 36, 36, 0.65);
+            text-align: center;
+            z-index: 100;
+
+            h3 {
+              margin: 0;
+            }
+
+            a {
+              display: flex;
+              align-items: center;
+              flex-wrap: wrap;
+              flex-direction: column;
+              justify-content: center;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              width: 100%;
+              padding: 2.5rem;
+
+              span {
+                display: block;
+                text-transform: uppercase;
+              }
+
+              span:first-of-type {
+                ${H1White};
+              }
+
+              span:last-of-type {
+                ${H3White};
+                margin-top: 2rem;
+              }
+
+              &:hover {
+                color: ${colors.colorSecondary};
+              }
+            }
+          }
         }
 
         &--right {
@@ -332,10 +474,50 @@ const StyledSection = styled.section`
             height: calc(50%);
             margin-top: 0;
           }
+
+          .news-events {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(36, 36, 36, 0.5);
+            text-align: center;
+            z-index: 100;
+
+            h3 {
+              margin: 0;
+            }
+
+            a {
+              display: flex;
+              align-items: center;
+              flex-wrap: wrap;
+              justify-content: center;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              width: 100%;
+              padding: 2.5rem;
+
+              span {
+                ${H3White};
+                text-transform: uppercase;
+              }
+            }
+          }
         }
       }
     }
   }
 `
+
+DirectionSection.propTypes = {
+  ourStory: PropTypes.object,
+  ourBeers: PropTypes.object,
+  newsEvents: PropTypes.object,
+}
 
 export default DirectionSection
