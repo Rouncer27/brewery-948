@@ -1,6 +1,6 @@
 import React from "react"
 
-import Hero from "../PageComponents/Hero"
+import Hero from "../PageComponents/Home/Hero"
 import DirectionSection from "../PageComponents/DirectionSection"
 import VisitTaproom from "../PageComponents/VisitTaproom"
 import FindUs from "../PageComponents/FindUs"

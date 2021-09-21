@@ -13,6 +13,7 @@ exports.createPages = async ({ graphql, actions }) => {
               slug
               databaseId
               uri
+              id
             }
           }
         }
@@ -31,7 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: `/${node.slug}`,
           component: path.resolve(`./src/templates/about.js`),
           context: {
-            id: node.databaseId,
+            id: node.id,
           },
         })
       } else if (node.template.templateName === "Home") {
@@ -39,7 +40,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: `/${node.slug}`,
           component: path.resolve(`./src/templates/home.js`),
           context: {
-            id: node.databaseId,
+            id: node.id,
           },
         })
       } else if (node.template.templateName === "Default") {
@@ -47,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path: `/${node.slug}`,
           component: path.resolve(`./src/templates/defaultPage.js`),
           context: {
-            id: node.databaseId,
+            id: node.id,
           },
         })
       }
