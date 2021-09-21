@@ -2,9 +2,9 @@ import React from "react"
 
 import Hero from "../PageComponents/Hero"
 import DirectionSection from "../PageComponents/DirectionSection"
+import VisitTaproom from "../PageComponents/VisitTaproom"
 
-const TempHome = ({ hero, direction }) => {
-  console.log("direction", direction)
+const TempHome = ({ hero, direction, taproom }) => {
   return (
     <>
       <Hero
@@ -21,6 +21,7 @@ const TempHome = ({ hero, direction }) => {
         seasonalFeature={direction.template.homeTemplate.seasonalFeature}
         seasonalSlug={direction.template.homeTemplate.seasonalFeatureSlug}
       />
+      <VisitTaproom taproom={taproom.template.homeTemplate.taproomImage} />
     </>
   )
 }

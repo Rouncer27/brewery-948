@@ -6,12 +6,12 @@ import Seo from "../components/Seo"
 import TempHome from "../components/Templates/TempHome"
 
 const IndexPage = props => {
-  const { hero, direction } = props.data
+  const { hero, direction, taproom } = props.data
 
   return (
     <Layout>
       <Seo title="Home" />
-      <TempHome hero={hero} direction={direction} />
+      <TempHome hero={hero} direction={direction} taproom={taproom} />
     </Layout>
   )
 }
@@ -111,6 +111,24 @@ export const homeQuery = graphql`
                 url
                 childImageSharp {
                   gatsbyImageData(width: 1500)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    taproom: wpPage(slug: { eq: "home" }) {
+      template {
+        ... on WpTemplate_Home {
+          homeTemplate {
+            taproomImage {
+              altText
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 2000)
                 }
               }
             }
