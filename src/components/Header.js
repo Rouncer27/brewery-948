@@ -23,6 +23,7 @@ const Header = ({ siteTitle }) => (
 
 const StyledHeader = styled.header`
   position: relative;
+  z-index: 999999;
 
   .headerLogo {
     width: 17.5rem;
