@@ -6,11 +6,16 @@ import Seo from "../components/Seo"
 import TempAbout from "../components/Templates/TempAbout"
 
 const About = props => {
-  const { hero, story, founders } = props.data
+  const { hero, story, founders, imageRow } = props.data
   return (
     <Layout>
       <Seo title="About Page" />
-      <TempAbout hero={hero} story={story} founders={founders} />
+      <TempAbout
+        hero={hero}
+        story={story}
+        founders={founders}
+        imageRow={imageRow}
+      />
     </Layout>
   )
 }
@@ -24,7 +29,6 @@ export const aboutTempQuery = graphql`
             heroTopContent
             heroTopImage {
               altText
-              sourceUrl
               localFile {
                 url
                 childImageSharp {
@@ -35,7 +39,6 @@ export const aboutTempQuery = graphql`
 
             heroTopIcon {
               altText
-              sourceUrl
               localFile {
                 url
                 childImageSharp {
@@ -66,11 +69,37 @@ export const aboutTempQuery = graphql`
             foundersContent
             foundersSketch {
               altText
-              sourceUrl
               localFile {
                 url
                 childImageSharp {
                   gatsbyImageData(width: 2000)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    imageRow: wpPage(id: { eq: $id }) {
+      template {
+        ... on WpTemplate_About {
+          aboutTemplate {
+            imageRowLeft {
+              altText
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
+            imageRowRight {
+              altText
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
                 }
               }
             }
