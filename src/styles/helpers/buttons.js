@@ -4,9 +4,9 @@ import { css } from "styled-components"
 import fonts from "./fonts"
 
 const Btn1Base = css`
-  ${fontSizer(1.6, 1.8, 76.8, 150, 1.8)};
+  ${fontSizer(1.4, 1.6, 76.8, 150, 1.8)};
   display: inline-block;
-  padding: 0.5rem 2.5rem;
+  padding: 1rem 3rem;
   border: none;
   border-radius: 0.25rem;
   transition: all 0.3s ease;
@@ -30,11 +30,12 @@ const Btn1Base = css`
   }
 `
 
-export const Btn1Navy = css`
+export const Btn1Orange = css`
   ${Btn1Base};
-  background: ${colors.colorPrimary};
-  border: solid 0.2rem ${colors.colorPrimary};
-  color: ${colors.white};
+  background: transparent;
+  border: solid 0.4rem ${colors.colorSecondary};
+  color: ${colors.colorSecondary};
+  font-weight: bold;
 
   &:hover {
     border-color: ${colors.colorSecondary};

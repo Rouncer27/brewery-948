@@ -1,62 +1,48 @@
+import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import {
-  colors,
-  H1White,
   medWrapper,
-  IntroOrange,
+  colors,
   B1White,
+  IntroOrange,
+  Btn1Orange,
 } from "../../../styles/helpers"
 
-import IconBeaker from "../../Icons/IconBeaker"
+import IconBeakerTwo from "../../Icons/IconBeakerTwo"
 
-const OurStory = ({ story }) => {
+const NameStory = ({ top, bot, slug }) => {
   return (
-    <SectionStyled>
+    <DivStyled>
       <div className="wrapper">
-        <div className="title">
-          <h2>Our Story</h2>
-        </div>
         <div className="icon">
-          <IconBeaker />
+          <IconBeakerTwo />
         </div>
         <div className="content">
           <div
-            className="content__content-top"
-            dangerouslySetInnerHTML={{
-              __html: story.template.aboutTemplate.ourStoryTop,
-            }}
+            className="content__top"
+            dangerouslySetInnerHTML={{ __html: top }}
           />
           <div
-            className="content__content-bot"
-            dangerouslySetInnerHTML={{
-              __html: story.template.aboutTemplate.ourStoryBottom,
-            }}
+            className="content__bot"
+            dangerouslySetInnerHTML={{ __html: bot }}
           />
+          <div className="content__link">
+            <Link to={`/${slug}`}>Read About Our Journey</Link>
+          </div>
         </div>
       </div>
-    </SectionStyled>
+    </DivStyled>
   )
 }
 
-const SectionStyled = styled.section`
-  padding: 2rem 0 5rem 0;
+const DivStyled = styled.div`
+  padding: 7.5rem 0 5rem 0;
   background-color: ${colors.colorAlt};
 
   .wrapper {
     ${medWrapper};
-  }
-
-  .title {
-    width: 100%;
-    margin-bottom: 6rem;
-    text-align: center;
-
-    h2 {
-      ${H1White};
-      margin-bottom: 0;
-      text-transform: uppercase;
-    }
+    align-items: center;
   }
 
   .icon {
@@ -80,7 +66,7 @@ const SectionStyled = styled.section`
       width: calc(80%);
     }
 
-    &__content-top {
+    &__top {
       width: 100%;
       margin-bottom: 4rem;
 
@@ -92,7 +78,7 @@ const SectionStyled = styled.section`
       }
     }
 
-    &__content-bot {
+    &__bot {
       width: 100%;
 
       p {
@@ -103,7 +89,16 @@ const SectionStyled = styled.section`
         }
       }
     }
+
+    &__link {
+      width: 100%;
+      margin-top: 5rem;
+
+      a {
+        ${Btn1Orange};
+      }
+    }
   }
 `
 
-export default OurStory
+export default NameStory
