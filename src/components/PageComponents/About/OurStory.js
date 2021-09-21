@@ -11,7 +11,6 @@ import {
 import IconBeaker from "../../Icons/IconBeaker"
 
 const OurStory = ({ story }) => {
-  console.log("story", story)
   return (
     <SectionStyled>
       <div className="wrapper">
@@ -41,7 +40,9 @@ const OurStory = ({ story }) => {
 }
 
 const SectionStyled = styled.section`
+  padding: 2rem 0 5rem 0;
   background-color: ${colors.colorAlt};
+
   .wrapper {
     ${medWrapper};
   }

@@ -2,8 +2,9 @@ import React from "react"
 
 import Hero from "../PageComponents/About/Hero"
 import OurStory from "../PageComponents/About/OurStory"
+import Founders from "../PageComponents/About/Founders"
 
-const TempAbout = ({ hero, story }) => {
+const TempAbout = ({ hero, story, founders }) => {
   return (
     <>
       <Hero
@@ -12,6 +13,10 @@ const TempAbout = ({ hero, story }) => {
         logo={hero.template.aboutTemplate.heroTopIcon}
       />
       <OurStory story={story} />
+      <Founders
+        content={founders.template.aboutTemplate.foundersContent}
+        sketch={founders.template.aboutTemplate.foundersSketch}
+      />
     </>
   )
 }
