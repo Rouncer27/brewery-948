@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React, { useState } from "react"
 import styled from "styled-components"
-import { colors, Btn1Green, Nav1White } from "../../../styles/helpers"
+import { colors, Nav1White, Btn1Grey } from "../../../styles/helpers"
 
 import HeaderSubMenu from "./HeaderSubMenu"
 
@@ -84,7 +84,7 @@ const HeaderNavItemStyled = styled.li`
   }
 
   button {
-    ${Btn1Green};
+    ${Btn1Grey};
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     background-color: transparent;

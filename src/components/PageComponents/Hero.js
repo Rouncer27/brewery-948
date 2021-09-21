@@ -77,11 +77,9 @@ const StyledSection = styled.section`
     padding: 2rem;
     transform: translate(-50%, 0%);
 
-    border: 0.5rem solid red;
-
     @media (min-width: 768px) {
       padding: 2rem;
-      max-width: 100rem;
+      max-width: 70rem;
     }
 
     @media (min-width: 1025px) {
@@ -100,14 +98,23 @@ const StyledSection = styled.section`
         ${H2White};
         margin: 0;
         margin-bottom: 1.5rem;
-        text-align: right;
+        text-align: center;
+
+        @media (min-width: 768px) {
+          text-align: right;
+        }
       }
     }
 
     &__logo {
+      display: none;
       width: 100%;
+      max-width: 25rem;
+
       @media (min-width: 768px) {
+        display: block;
         width: calc(35%);
+        max-width: 100%;
       }
     }
   }
