@@ -343,6 +343,7 @@ const StyledSection = styled.section`
 
             p {
               ${H2White};
+              margin: 0;
             }
           }
         }

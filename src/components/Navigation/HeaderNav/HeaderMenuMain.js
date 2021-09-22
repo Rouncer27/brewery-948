@@ -45,7 +45,7 @@ const HeaderMenu = () => {
             return <HeaderNavItem key={item.id} item={item} top={true} />
           })}
           <HighlightedLink>
-            <Link to="/taproom">Visit Our Taproom</Link>
+            <Link to="/contact">Visit Our Taproom</Link>
           </HighlightedLink>
         </ul>
       </HeaderNavStyled>

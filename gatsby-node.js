@@ -51,6 +51,14 @@ exports.createPages = async ({ graphql, actions }) => {
             id: node.id,
           },
         })
+      } else if (node.template.templateName === "Contact") {
+        createPage({
+          path: `/${node.slug}`,
+          component: path.resolve(`./src/templates/contact.js`),
+          context: {
+            id: node.id,
+          },
+        })
       } else if (node.template.templateName === "Default") {
         createPage({
           path: `/${node.slug}`,
