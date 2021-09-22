@@ -39,7 +39,8 @@ const SectionStyled = styled.section`
 
   .image {
     position: relative;
-    height: 50rem;
+    width: 100%;
+    height: 40rem;
 
     @media (min-width: 768px) {
       height: 60rem;
@@ -71,9 +72,15 @@ const SectionStyled = styled.section`
 
   .content {
     width: 100%;
+    padding: 2rem 4rem;
+    text-align: center;
 
     @media (min-width: 768px) {
-      width: calc(50%);
+      width: calc(50% - 2.5rem);
+      margin-right: auto;
+      margin-left: 2.5rem;
+      padding: 2rem 2rem 2rem 0;
+      text-align: left;
     }
 
     @media (min-width: 1025px) {
@@ -81,6 +88,7 @@ const SectionStyled = styled.section`
       max-width: 50rem;
       margin-right: auto;
       margin-left: 5rem;
+      padding: 0;
     }
 
     h2 {
