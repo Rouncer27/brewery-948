@@ -14,8 +14,6 @@ const MobileNavItem = ({ item }) => {
     .filter(item => item !== process.env.GATSBY_WORDPRESS_URL)
     .join("/")
 
-  console.log("HERES THE SLUG", slug)
-
   const [subActive, setSubActive] = useState(false)
 
   const handleToggleActive = () => {
