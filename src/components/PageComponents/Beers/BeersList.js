@@ -68,30 +68,45 @@ const DivStyled = styled.div`
     justify-content: flex-start;
   }
 
-  .beer-card:nth-of-type(4n + 1) {
-    margin-right: 1.5rem;
+  .beer-card:nth-of-type(2n + 1) {
+    margin-right: 1rem;
     margin-left: 0;
   }
 
-  .beer-card:nth-of-type(4n + 2) {
-    margin-right: 1rem;
-    margin-left: 0.5rem;
-  }
-
-  .beer-card:nth-of-type(4n + 3) {
-    margin-right: 0.5rem;
+  .beer-card:nth-of-type(2n + 2) {
+    margin-right: 0;
     margin-left: 1rem;
   }
 
-  .beer-card:nth-of-type(4n + 4) {
-    margin-right: 0;
-    margin-left: 1.5rem;
+  @media (min-width: 768px) {
+    .beer-card:nth-of-type(4n + 1) {
+      margin-right: 1.5rem;
+      margin-left: 0;
+    }
+
+    .beer-card:nth-of-type(4n + 2) {
+      margin-right: 1rem;
+      margin-left: 0.5rem;
+    }
+
+    .beer-card:nth-of-type(4n + 3) {
+      margin-right: 0.5rem;
+      margin-left: 1rem;
+    }
+
+    .beer-card:nth-of-type(4n + 4) {
+      margin-right: 0;
+      margin-left: 1.5rem;
+    }
   }
 `
 
 const BeerCard = styled(Link)`
   position: relative;
-  width: calc(100% / 2);
+  width: calc((100vw / 2) - 1rem);
+  height: calc((100vw / 2) - 1rem);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   @media (min-width: 768px) {
     width: calc((100vw / 4) - 1.5rem);
