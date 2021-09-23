@@ -4,8 +4,9 @@ import Visit from "../PageComponents/Contact/Visit"
 import Hours from "../PageComponents/Contact/Hours"
 import Rent from "../PageComponents/Contact/Rent"
 import ContactForm from "../PageComponents/Contact/ContactForm"
+import Social from "../PageComponents/Contact/Social"
 
-const TempContact = ({ visit, hours, rent }) => {
+const TempContact = ({ visit, hours, rent, social }) => {
   return (
     <>
       <Visit
@@ -21,6 +22,7 @@ const TempContact = ({ visit, hours, rent }) => {
         content={rent.template.contactTemplate.rentTaproomContent}
       />
       <ContactForm />
+      <Social url={social.template.contactTemplate.googleReviewUrl} />
     </>
   )
 }

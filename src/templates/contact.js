@@ -6,11 +6,11 @@ import Seo from "../components/Seo"
 import TempContact from "../components/Templates/TempContact"
 
 const Contact = props => {
-  const { visit, hours, rent } = props.data
+  const { visit, hours, rent, social } = props.data
   return (
     <Layout>
       <Seo title="Contact Page" />
-      <TempContact visit={visit} hours={hours} rent={rent} />
+      <TempContact visit={visit} hours={hours} rent={rent} social={social} />
     </Layout>
   )
 }
@@ -69,6 +69,16 @@ export const contactTempQuery = graphql`
                 }
               }
             }
+          }
+        }
+      }
+    }
+
+    social: wpPage(id: { eq: $id }) {
+      template {
+        ... on WpTemplate_Contact {
+          contactTemplate {
+            googleReviewUrl
           }
         }
       }

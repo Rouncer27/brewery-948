@@ -152,13 +152,23 @@ const SectionStyled = styled.div`
 
   .wrapper {
     ${standardWrapper};
+    justify-content: flex-start;
+
+    @media (min-width: 768px) {
+      justify-content: center;
+    }
   }
 
   .icon {
     width: calc(100%);
+    max-width: 17.5rem;
+    margin-bottom: 2.5rem;
+    padding-left: 2rem;
 
     @media (min-width: 768px) {
       width: calc(20%);
+      max-width: 100%;
+      margin-bottom: 0;
       padding: 2rem;
     }
   }
@@ -198,9 +208,14 @@ const SectionStyled = styled.div`
 `
 
 const InputField = styled.div`
-  width: calc(50% - 4rem);
+  width: calc(100% - 4rem);
   margin: 1rem 2rem;
   padding: 1rem 0;
+
+  @media (min-width: 768px) {
+    width: calc(50% - 4rem);
+    margin: 1rem 2rem;
+  }
 
   label {
     ${B1White};
