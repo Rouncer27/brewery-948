@@ -6,7 +6,7 @@ import { colors } from "../../../styles/helpers"
 
 const getData = graphql`
   {
-    beers: allWpOurBeer(sort: { order: DESC, fields: date }) {
+    beers: allWpOurBeer(sort: { order: ASC, fields: date }) {
       edges {
         node {
           slug
@@ -31,19 +31,24 @@ const getData = graphql`
 const BeersList = () => {
   const postsData = useStaticQuery(getData)
   const beers = postsData.beers.edges
-
-  console.log(beers)
   return (
     <DivStyled>
       <div className="wrapper">
-        {beers.map(beer => {
+        {beers.map((beer, index) => {
           const imageSrc = getImage(
             beer.node.ourBeers.image.localFile.childImageSharp.gatsbyImageData
           )
           const imageAlt = getImage(beer.node.ourBeers.image.altText)
           return (
-            <BeerCard to={`/our-beers`} key={beer.node.key}>
-              <GatsbyImage image={imageSrc} alt={imageAlt} layout="fixed" />
+            <BeerCard
+              className="beer-card"
+              beerpos={index + 1}
+              to={`/our-beers`}
+              key={beer.node.key}
+            >
+              <div className="image-wrap">
+                <GatsbyImage image={imageSrc} alt={imageAlt} layout="fixed" />
+              </div>
             </BeerCard>
           )
         })}
@@ -62,13 +67,53 @@ const DivStyled = styled.div`
     flex-wrap: wrap;
     justify-content: flex-start;
   }
+
+  .beer-card:nth-of-type(4n + 1) {
+    margin-right: 1.5rem;
+    margin-left: 0;
+  }
+
+  .beer-card:nth-of-type(4n + 2) {
+    margin-right: 1rem;
+    margin-left: 0.5rem;
+  }
+
+  .beer-card:nth-of-type(4n + 3) {
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  .beer-card:nth-of-type(4n + 4) {
+    margin-right: 0;
+    margin-left: 1.5rem;
+  }
 `
 
 const BeerCard = styled(Link)`
+  position: relative;
   width: calc(100% / 2);
 
   @media (min-width: 768px) {
-    width: calc(100% / 4);
+    width: calc((100vw / 4) - 1.5rem);
+    height: calc((100vw / 4) - 1.5rem);
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .image-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .gatsby-image-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 `
 
