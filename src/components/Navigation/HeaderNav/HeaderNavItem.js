@@ -6,7 +6,7 @@ import { colors, Nav1White, Btn1Grey } from "../../../styles/helpers"
 import HeaderSubMenu from "./HeaderSubMenu"
 
 const HeaderNavItem = ({ item }) => {
-  const slug = item.url
+  let slug = item.url
     .split("/")
     .filter(item => item !== "")
     .filter(item => item !== "https:")
@@ -14,6 +14,10 @@ const HeaderNavItem = ({ item }) => {
     .filter(item => item !== process.env.GATSBY_WORDPRESS_URL)
     .join("/")
   const [subActive, setSubActive] = useState(false)
+
+  if (item.target !== null) {
+    slug = item.url
+  }
 
   const handleIsActiveOn = () => {
     setSubActive(true)
@@ -25,14 +29,20 @@ const HeaderNavItem = ({ item }) => {
 
   return (
     <HeaderNavItemStyled>
-      <Link
-        to={`/${slug}`}
-        onMouseEnter={handleIsActiveOn}
-        onMouseLeave={handleIsActiveOff}
-        onFocus={handleIsActiveOn}
-      >
-        {item.label}
-      </Link>
+      {item.target === null ? (
+        <Link
+          to={`/${slug}`}
+          onMouseEnter={handleIsActiveOn}
+          onMouseLeave={handleIsActiveOff}
+          onFocus={handleIsActiveOn}
+        >
+          {item.label}
+        </Link>
+      ) : (
+        <a target="_blank" rel="noreferrer" href={slug}>
+          {item.label}
+        </a>
+      )}
 
       {item.subItems.length > 0 && (
         <>

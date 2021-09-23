@@ -18,6 +18,7 @@ const getData = graphql`
           parentId
           id
           databaseId
+          target
         }
       }
     }
