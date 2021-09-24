@@ -9,6 +9,7 @@ import {
 } from "../../../styles/helpers"
 
 import IconBeaker from "../../Icons/IconBeaker"
+import arrowGIF from "../../../images/storyarrow.gif"
 
 const OurStory = ({ story }) => {
   return (
@@ -16,6 +17,9 @@ const OurStory = ({ story }) => {
       <div className="wrapper">
         <div className="title">
           <h2>Our Story</h2>
+          <div className="arrow-one">
+            <img src={arrowGIF} alt="" />
+          </div>
         </div>
         <div className="icon">
           <IconBeaker />
@@ -48,6 +52,7 @@ const SectionStyled = styled.section`
   }
 
   .title {
+    position: relative;
     width: 100%;
     margin-bottom: 6rem;
     text-align: center;
@@ -56,6 +61,13 @@ const SectionStyled = styled.section`
       ${H1White};
       margin-bottom: 0;
       text-transform: uppercase;
+    }
+
+    .arrow-one {
+      position: absolute;
+      top: 10%;
+      left: 30%;
+      z-index: 1000;
     }
   }
 

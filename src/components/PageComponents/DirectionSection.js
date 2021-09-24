@@ -5,6 +5,8 @@ import styled from "styled-components"
 import { colors, H1White, H3White } from "../../styles/helpers"
 import { Link } from "gatsby"
 
+import arrowGIF from "../../images/roundarrow.gif"
+
 const DirectionSection = ({
   ourStory,
   ourBeers,
@@ -43,9 +45,12 @@ const DirectionSection = ({
       <div className="top-sec">
         <div className="top-sec__left">
           <div className="our-story">
-            <h2>
-              <Link to="/our-story">Our Story</Link>
-            </h2>
+            <Link to="/our-story">
+              <h2>Our Story</h2>
+              <div className="arrow-one">
+                <img src={arrowGIF} alt="" />
+              </div>
+            </Link>
           </div>
           <div>
             <GatsbyImage
@@ -307,6 +312,14 @@ const StyledSection = styled.section`
         height: auto;
       }
 
+      .arrow-one {
+        position: absolute;
+        bottom: 5%;
+        right: 12rem;
+        z-index: 100;
+        transform: rotate(-30deg);
+      }
+
       .our-story {
         position: absolute;
         top: 50%;
@@ -319,7 +332,16 @@ const StyledSection = styled.section`
         z-index: 100;
 
         h2 {
+          ${H1White};
+          display: block;
           margin: 0;
+          transition: all 0.3s ease-out;
+          text-transform: uppercase;
+
+          &:hover {
+            background-color: ${colors.white};
+            color: ${colors.black};
+          }
         }
 
         a {
@@ -332,6 +354,10 @@ const StyledSection = styled.section`
           &:hover {
             background-color: ${colors.white};
             color: ${colors.black};
+
+            h2 {
+              color: ${colors.black};
+            }
           }
         }
       }

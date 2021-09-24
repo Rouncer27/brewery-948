@@ -3,6 +3,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { B1Black, H1Black, H3Orange, medWrapper } from "../../../styles/helpers"
 
+import arrowGIF from "../../../images/looparrow.gif"
+
 const Founders = ({ content, sketch }) => {
   const sketchDisplay = getImage(
     sketch.localFile.childImageSharp.gatsbyImageData
@@ -13,6 +15,9 @@ const Founders = ({ content, sketch }) => {
       <div className="wrapper">
         <div className="title">
           <h2>948 Founders</h2>
+          <div className="arrow-one">
+            <img src={arrowGIF} alt="" />
+          </div>
         </div>
         <div className="sketch">
           <GatsbyImage
@@ -44,6 +49,7 @@ const SectionStyled = styled.section`
   }
 
   .title {
+    position: relative;
     width: 100%;
     text-align: center;
 
@@ -51,6 +57,13 @@ const SectionStyled = styled.section`
       ${H1Black};
       margin-bottom: 6rem;
       text-transform: uppercase;
+    }
+
+    .arrow-one {
+      position: absolute;
+      top: 15%;
+      left: 25%;
+      z-index: 1000;
     }
   }
 

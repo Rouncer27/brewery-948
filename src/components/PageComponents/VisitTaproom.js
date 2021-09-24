@@ -1,9 +1,10 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { colors, H1White } from "../../styles/helpers"
+
+import arrowGIF from "../../images/looparrow.gif"
 
 const VisitTaproom = ({ taproom }) => {
   const imageDisplay = getImage(
@@ -22,9 +23,12 @@ const VisitTaproom = ({ taproom }) => {
       </div>
       <div className="hero-content">
         <div className="hero-content__title">
-          <h2>
-            <Link to="/taproom">Visit Our Taproom</Link>
-          </h2>
+          <Link to="/taproom">
+            <h2>Visit Our Taproom</h2>
+            <div className="arrow-one">
+              <img src={arrowGIF} alt="" />
+            </div>
+          </Link>
         </div>
       </div>
     </StyledSection>
@@ -80,17 +84,25 @@ const StyledSection = styled.section`
       }
 
       h2 {
+        ${H1White};
+        display: block;
         margin: 0;
+        padding: 7rem;
+        text-align: center;
+        text-transform: uppercase;
+        transition: all 0.3s ease-out;
+      }
 
-        a {
-          ${H1White};
-          display: block;
-          margin: 0;
-          padding: 7rem;
-          text-align: center;
-          text-transform: uppercase;
+      .arrow-one {
+        position: absolute;
+        top: -1rem;
+        left: 34%;
+        z-index: 100;
+      }
 
-          &:hover {
+      a {
+        &:hover {
+          h2 {
             color: ${colors.colorSecondary};
           }
         }
