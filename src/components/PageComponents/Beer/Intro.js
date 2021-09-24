@@ -3,8 +3,19 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { B1Black, H1Black, medWrapper } from "../../../styles/helpers"
 
-const Intro = ({ beer }) => {
-  console.log(beer)
+const Intro = ({ beer, allBeers, prevBeer, nextBeer }) => {
+  console.log("allBeers", allBeers)
+  console.log("prevBeer", prevBeer)
+  console.log("nextBeer", nextBeer)
+  const prevSlug =
+    prevBeer === null
+      ? allBeers.edges[allBeers.edges.length - 1].node.slug
+      : prevBeer
+  const newsSlug = nextBeer === null ? allBeers.edges[0].node.slug : nextBeer
+
+  console.log(prevSlug)
+  console.log(newsSlug)
+
   const imgDisplay = getImage(
     beer.ourBeers.image.localFile.childImageSharp.gatsbyImageData
   )

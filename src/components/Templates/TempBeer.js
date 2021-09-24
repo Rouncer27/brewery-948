@@ -7,7 +7,12 @@ import Taproom from "../PageComponents/Beer/Taproom"
 const TempBeer = ({ beer, allBeers, prevBeer, nextBeer }) => {
   return (
     <>
-      <Intro beer={beer} />
+      <Intro
+        beer={beer}
+        allBeers={allBeers}
+        prevBeer={prevBeer}
+        nextBeer={nextBeer}
+      />
       <Details details={beer.ourBeers.details} url={beer.ourBeers.buyNowUrl} />
       <Taproom />
     </>
