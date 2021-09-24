@@ -19,6 +19,7 @@ const getData = graphql`
           title
           acfPost {
             excerpt
+            pinToTop
             featuredImage {
               altText
               localFile {
@@ -38,6 +39,11 @@ const getData = graphql`
 const Posts = () => {
   const postsData = useStaticQuery(getData)
   const posts = postsData.posts.edges
+
+  posts.sort(x => (x.node.acfPost.pinToTop ? -1 : 1))
+
+  console.log(posts)
+
   return (
     <SectionStyled>
       <div className="wrapper">

@@ -7,12 +7,15 @@ import {
   standardWrapper,
 } from "../../../styles/helpers"
 
-const Title = ({ title, date }) => {
+const Title = ({ title, date, author }) => {
+  const options = { year: "numeric", month: "long" }
+  const postDate = new Date(date).toLocaleDateString(undefined, options)
   return (
     <SectionStyled>
       <div className="wrapper">
         <div className="meta">
-          <p>{date}</p>
+          <p>{postDate}</p>
+          <p>{author}</p>
         </div>
         <div className="title">
           <h1>{title}</h1>
@@ -28,6 +31,8 @@ const SectionStyled = styled.section`
   }
 
   .meta {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     border-bottom: 0.4rem solid ${colors.colorSecondary};
     margin-bottom: 2rem;

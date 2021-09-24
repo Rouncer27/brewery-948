@@ -32,6 +32,8 @@ export const query = graphql`
       }
       acfPost {
         mainContent
+        author
+        pinToTop
         featuredImage {
           altText
           localFile {
