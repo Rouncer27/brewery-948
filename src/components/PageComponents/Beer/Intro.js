@@ -1,21 +1,17 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import { B1Black, H1Black, medWrapper } from "../../../styles/helpers"
+import {
+  B1Black,
+  H1Black,
+  medWrapper,
+  H2Orange,
+  fontSizer,
+  colors,
+} from "../../../styles/helpers"
+import { Link } from "gatsby"
 
-const Intro = ({ beer, allBeers, prevBeer, nextBeer }) => {
-  console.log("allBeers", allBeers)
-  console.log("prevBeer", prevBeer)
-  console.log("nextBeer", nextBeer)
-  const prevSlug =
-    prevBeer === null
-      ? allBeers.edges[allBeers.edges.length - 1].node.slug
-      : prevBeer
-  const newsSlug = nextBeer === null ? allBeers.edges[0].node.slug : nextBeer
-
-  console.log(prevSlug)
-  console.log(newsSlug)
-
+const Intro = ({ beer, prevBeer, nextBeer }) => {
   const imgDisplay = getImage(
     beer.ourBeers.image.localFile.childImageSharp.gatsbyImageData
   )
@@ -38,9 +34,41 @@ const Intro = ({ beer, allBeers, prevBeer, nextBeer }) => {
           <div dangerouslySetInnerHTML={{ __html: beer.ourBeers.content }} />
         </div>
       </div>
+      <BeerNav>
+        <Link to={`/our-beers/${prevBeer}`}>&#8249;</Link>
+        <Link to={`/our-beers/${nextBeer}`}>&#8250;</Link>
+      </BeerNav>
     </SectionStyled>
   )
 }
+
+const BeerNav = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  transform: translateY(-50%);
+
+  a {
+    ${H2Orange};
+    ${fontSizer(2.8, 6, 76.8, 150, 3.0)};
+
+    &:hover {
+      color: ${colors.colorPrimary};
+    }
+
+    &:first-of-type {
+      padding-left: 2.5rem;
+    }
+
+    &:last-of-type {
+      padding-right: 2.5rem;
+    }
+  }
+`
 
 const SectionStyled = styled.section`
   margin-top: 5rem;

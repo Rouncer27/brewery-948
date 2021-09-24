@@ -6,7 +6,7 @@ import { colors } from "../../../styles/helpers"
 
 const getData = graphql`
   {
-    beers: allWpOurBeer(sort: { order: ASC, fields: date }) {
+    beers: allWpOurBeer(sort: { order: DESC, fields: date }) {
       edges {
         node {
           slug

@@ -114,8 +114,14 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           id: node.id,
           slug: node.slug,
-          next: index === 0 ? null : beers[index - 1].node.slug,
-          prev: index === beers.length - 1 ? null : beers[index + 1].node.slug,
+          prev:
+            index === 0
+              ? beers[beers.length - 1].node.slug
+              : beers[index - 1].node.slug,
+          next:
+            index === beers.length - 1
+              ? beers[0].node.slug
+              : beers[index + 1].node.slug,
         },
       })
     })

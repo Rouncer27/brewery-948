@@ -45,15 +45,6 @@ export const query = graphql`
         }
       }
     }
-
-    allBeers: allWpOurBeer {
-      edges {
-        node {
-          title
-          slug
-        }
-      }
-    }
   }
 `
 
