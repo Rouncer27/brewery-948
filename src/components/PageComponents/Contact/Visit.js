@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { B1Black, H1Black } from "../../../styles/helpers"
 
 const Visit = ({ image, content }) => {
-  console.log(image, content)
   const imgDisplay = getImage(image.localFile.childImageSharp.gatsbyImageData)
   const imgAlt = image.altText
   return (

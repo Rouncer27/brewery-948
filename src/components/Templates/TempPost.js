@@ -6,7 +6,6 @@ import Title from "../PageComponents/Post/Title"
 import PostNav from "../PageComponents/Post/PostNav"
 
 const TempPost = ({ post, prevPost, nextPost }) => {
-  console.log("POST", post)
   return (
     <>
       <FeaturedImage image={post.acfPost.featuredImage} />

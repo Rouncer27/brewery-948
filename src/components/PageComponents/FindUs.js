@@ -46,9 +46,7 @@ const FindUs = ({ locations }) => {
                         </>
                       ))
                 )
-                  console.log(locationContent)
-
-                return locationContent
+                  return locationContent
               })}
             </ul>
           </div>

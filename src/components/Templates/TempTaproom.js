@@ -4,8 +4,6 @@ import Hero from "../PageComponents/Taproom/Hero"
 import ImageSection from "../PageComponents/Taproom/ImageSection"
 
 const TempTaproom = ({ hero, imageSec }) => {
-  console.log("imageSec: ", imageSec)
-
   return (
     <>
       <Hero
