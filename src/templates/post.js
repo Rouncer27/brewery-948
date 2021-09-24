@@ -6,14 +6,14 @@ import Seo from "../components/Seo"
 import TempPost from "../components/Templates/TempPost"
 
 const Post = props => {
-  const { post, allPosts } = props.data
+  const { post } = props.data
   const prevPost = props.pageContext.prev
   const nextPost = props.pageContext.next
 
   return (
     <Layout>
       <Seo />
-      <TempPost />
+      <TempPost post={post} prevPost={prevPost} nextPost={nextPost} />
     </Layout>
   )
 }
@@ -31,7 +31,7 @@ export const query = graphql`
         }
       }
       acfPost {
-        excerpt
+        mainContent
         featuredImage {
           altText
           localFile {
@@ -40,15 +40,6 @@ export const query = graphql`
               gatsbyImageData(width: 1500)
             }
           }
-        }
-      }
-    }
-
-    allPosts: allWpPost {
-      edges {
-        node {
-          title
-          slug
         }
       }
     }

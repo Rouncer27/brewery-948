@@ -1,9 +1,16 @@
 import React from "react"
 
-const TempPost = () => {
+import FeaturedImage from "../PageComponents/Post/FeaturedImage"
+import Wysiwyg from "../PageComponents/Post/Wysiwyg"
+import Title from "../PageComponents/Post/Title"
+
+const TempPost = ({ post, prevPost, nextPost }) => {
+  console.log("POST", post)
   return (
     <>
-      <h1>Temp Post</h1>
+      <FeaturedImage image={post.acfPost.featuredImage} />
+      <Title title={post.title} date={post.date} />
+      <Wysiwyg wysiwyg={post.acfPost.mainContent} />
     </>
   )
 }
