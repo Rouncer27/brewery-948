@@ -17,6 +17,26 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+
+        posts: allWpPost {
+          edges {
+            node {
+              id
+              slug
+              uri
+            }
+          }
+        }
+
+        beers: allWpOurBeer {
+          edges {
+            node {
+              id
+              slug
+              uri
+            }
+          }
+        }
       }
     `)
 
@@ -84,6 +104,34 @@ exports.createPages = async ({ graphql, actions }) => {
           },
         })
       }
+    })
+
+    const beers = data.beers.edges
+    beers.forEach(({ node }, index) => {
+      createPage({
+        path: `/our-beers/${node.slug}/`,
+        component: path.resolve("./src/templates/beer.js"),
+        context: {
+          id: node.id,
+          slug: node.slug,
+          next: index === 0 ? null : beers[index - 1].node.slug,
+          prev: index === beers.length - 1 ? null : beers[index + 1].node.slug,
+        },
+      })
+    })
+
+    const posts = data.posts.edges
+    posts.forEach(({ node }, index) => {
+      createPage({
+        path: `/news-and-events/${node.slug}/`,
+        component: path.resolve("./src/templates/post.js"),
+        context: {
+          id: node.id,
+          slug: node.slug,
+          next: index === 0 ? null : posts[index - 1].node.slug,
+          prev: index === posts.length - 1 ? null : posts[index + 1].node.slug,
+        },
+      })
     })
   } catch (err) {
     console.log("Error retrieving WordPress data", err)

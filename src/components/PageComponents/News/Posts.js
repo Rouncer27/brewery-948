@@ -50,7 +50,7 @@ const Posts = () => {
           return (
             <ArticleCard
               className="article"
-              to={`/news-and-events`}
+              to={`/news-and-events/${post.node.slug}`}
               key={post.node.id}
             >
               <div className="article-wrapper">

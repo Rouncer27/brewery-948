@@ -8,7 +8,7 @@ import {
   fontSizer,
 } from "../../../styles/helpers"
 
-const HeroConentFour = ({ content, slug, btnText }) => {
+const HeroConentFour = ({ content, slug, btnText, external }) => {
   return (
     <DivStyled>
       <div className="inner-wrap">
@@ -16,7 +16,13 @@ const HeroConentFour = ({ content, slug, btnText }) => {
           <p dangerouslySetInnerHTML={{ __html: content }} />
         </div>
         <div className="hero-content__link">
-          <Link to={`/${slug}`}>{btnText}</Link>
+          {external ? (
+            <a target="_blank" rel="noreferrer" href={slug}>
+              {btnText}
+            </a>
+          ) : (
+            <Link to={`/${slug}`}>{btnText}</Link>
+          )}
         </div>
       </div>
     </DivStyled>

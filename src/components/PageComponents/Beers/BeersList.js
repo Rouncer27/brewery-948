@@ -43,7 +43,7 @@ const BeersList = () => {
             <BeerCard
               className="beer-card"
               beerpos={index + 1}
-              to={`/our-beers`}
+              to={`/our-beers/${beer.node.slug}`}
               key={beer.node.key}
             >
               <div className="image-wrap">

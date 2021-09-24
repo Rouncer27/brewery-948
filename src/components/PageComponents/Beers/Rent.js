@@ -11,6 +11,7 @@ const Rent = ({ image, content }) => {
       <HeroConentFour
         content={content}
         slug={"taproom"}
+        external={false}
         btnText="Rent Our Taproom"
       />
     </StyledSection>
