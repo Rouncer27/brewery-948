@@ -94,13 +94,9 @@ const DirectionSection = ({
             </div>
           </div>
           <div className="top-sec__right--bot top-sec__right--bot--right">
-            <div className="news-events">
-              <h3>
-                <Link to={`/news-and-events`}>
-                  <span>News &#43; Events</span>
-                </Link>
-              </h3>
-            </div>
+            <Link className="news-events" to={`/news-and-events`}>
+              <span>News &#43; Events</span>
+            </Link>
             <div>
               <GatsbyImage
                 image={newsEventsSrc}
@@ -114,17 +110,15 @@ const DirectionSection = ({
       </div>
       <div className="bot-sec">
         <div className="bot-sec__left">
-          <div className="shop-gear">
-            <h3>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://948-brewing-company.square.site/"
-              >
-                <span>Shop Beer &#43; Gear</span>
-              </a>
-            </h3>
-          </div>
+          <a
+            className="shop-gear"
+            target="_blank"
+            rel="noreferrer"
+            href="https://948-brewing-company.square.site/"
+          >
+            <span>Shop Beer &#43; Gear</span>
+          </a>
+
           <div>
             <GatsbyImage
               image={shopGearSrc}
@@ -135,13 +129,14 @@ const DirectionSection = ({
           </div>
         </div>
         <div className="bot-sec__right">
-          <div className="now-pouring">
-            <h3>
-              <a target="_blank" rel="noreferrer" href="https://948brewing.ca/">
-                Now Pouring
-              </a>
-            </h3>
-          </div>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://948brewing.ca/"
+            className="now-pouring"
+          >
+            <span>Now Pouring</span>
+          </a>
           <div>
             <GatsbyImage
               image={nowPouringSrc}
@@ -201,6 +196,10 @@ const StyledSection = styled.section`
       }
 
       .shop-gear {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
         position: absolute;
         top: 0;
         left: 0;
@@ -210,26 +209,20 @@ const StyledSection = styled.section`
         text-align: center;
         z-index: 100;
 
-        h3 {
-          margin: 0;
+        span {
+          ${H3White};
+          display: block;
+          position: relative;
+          transform: translateY(100%);
+          transition: all 0.3s ease-out;
+          text-transform: uppercase;
+          opacity: 0;
         }
 
-        a {
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          justify-content: center;
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          width: 100%;
-          padding: 2.5rem;
-
+        &:hover {
           span {
-            ${H3White};
-            text-transform: uppercase;
+            transform: translateY(0%);
+            opacity: 1;
           }
         }
       }
@@ -253,28 +246,54 @@ const StyledSection = styled.section`
       }
 
       .now-pouring {
+        ${H1White};
+        display: block;
+        width: 100%;
+        padding: 2.5rem;
+        text-transform: uppercase;
         position: absolute;
         top: 50%;
         left: 0;
         width: 100%;
         transform: translate(0%, -50%);
-        background-color: rgba(36, 36, 36, 0.65);
+        transition: all 0.3s ease-out;
         text-align: center;
         z-index: 100;
 
-        h3 {
-          margin: 0;
+        span {
+          position: relative;
+          z-index: 99999;
         }
 
-        a {
-          ${H1White};
-          display: block;
+        &::after {
+          position: absolute;
           width: 100%;
-          padding: 2.5rem;
-          text-transform: uppercase;
+          height: 100%;
+          top: 0;
+          right: 0;
+          content: "";
+          background-color: rgba(36, 36, 36, 0.65);
+          transition: all 0.3s ease-out;
+          z-index: 1;
+        }
 
-          &:hover {
-            color: ${colors.colorSecondary};
+        &::before {
+          position: absolute;
+          width: 0;
+          height: 100%;
+          top: 0;
+          right: 0;
+          content: "";
+          background-color: #d57b2e;
+          transition: all 0.3s ease-out;
+          z-index: 10;
+        }
+
+        &:hover {
+          color: ${colors.black};
+
+          &::before {
+            width: 100%;
           }
         }
       }
@@ -525,6 +544,10 @@ const StyledSection = styled.section`
           }
 
           .news-events {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
             position: absolute;
             top: 0;
             left: 0;
@@ -534,26 +557,20 @@ const StyledSection = styled.section`
             text-align: center;
             z-index: 100;
 
-            h3 {
-              margin: 0;
+            span {
+              ${H3White};
+              display: block;
+              position: relative;
+              transform: translateY(100%);
+              transition: all 0.3s ease-out;
+              text-transform: uppercase;
+              opacity: 0;
             }
 
-            a {
-              display: flex;
-              align-items: center;
-              flex-wrap: wrap;
-              justify-content: center;
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              width: 100%;
-              padding: 2.5rem;
-
+            &:hover {
               span {
-                ${H3White};
-                text-transform: uppercase;
+                transform: translateY(0%);
+                opacity: 1;
               }
             }
           }
