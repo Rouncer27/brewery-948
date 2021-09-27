@@ -37,7 +37,7 @@ const LinksRow = ({ beer, events, taproom }) => {
           />
         </div>
         <div className="image taproom-img">
-          <Link to="/taproom">Vist Our Taproom</Link>
+          <Link to="/contact">Vist Our Taproom</Link>
           <GatsbyImage
             image={taproomDisplay}
             alt={taproomAlt}
