@@ -17,7 +17,17 @@ const getData = graphql`
               localFile {
                 url
                 childImageSharp {
-                  gatsbyImageData(width: 1500)
+                  gatsbyImageData(width: 1000)
+                }
+              }
+            }
+
+            ingredientImage {
+              altText
+              localFile {
+                url
+                childImageSharp {
+                  gatsbyImageData(width: 1000)
                 }
               }
             }
@@ -39,6 +49,14 @@ const BeersList = () => {
             beer.node.ourBeers.image.localFile.childImageSharp.gatsbyImageData
           )
           const imageAlt = getImage(beer.node.ourBeers.image.altText)
+
+          const imageIngreSrc = getImage(
+            beer.node.ourBeers.ingredientImage.localFile.childImageSharp
+              .gatsbyImageData
+          )
+          const imageIngreAlt = getImage(
+            beer.node.ourBeers.ingredientImage.altText
+          )
           return (
             <BeerCard
               className="beer-card"
@@ -46,8 +64,25 @@ const BeersList = () => {
               to={`/our-beers/${beer.node.slug}`}
               key={beer.node.key}
             >
-              <div className="image-wrap">
-                <GatsbyImage image={imageSrc} alt={imageAlt} layout="fixed" />
+              <div className="beer-card__inner">
+                <div className="beer-card__face beer-card__face--front">
+                  <div className="image-wrap">
+                    <GatsbyImage
+                      image={imageSrc}
+                      alt={imageAlt}
+                      layout="fixed"
+                    />
+                  </div>
+                </div>
+                <div className="beer-card__face beer-card__face--back">
+                  <div className="image-wrap">
+                    <GatsbyImage
+                      image={imageIngreSrc}
+                      alt={imageIngreAlt}
+                      layout="fixed"
+                    />
+                  </div>
+                </div>
               </div>
             </BeerCard>
           )
@@ -107,12 +142,45 @@ const BeerCard = styled(Link)`
   height: calc((100vw / 2) - 1rem);
   margin-top: 1rem;
   margin-bottom: 1rem;
+  perspective: 100rem;
 
   @media (min-width: 768px) {
     width: calc((100vw / 4) - 1.5rem);
     height: calc((100vw / 4) - 1.5rem);
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
+  }
+
+  .beer-card__inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+
+    &.is-flipped {
+      transform: rotateY(180deg);
+    }
+    &:hover {
+      transform: rotateY(180deg);
+    }
+  }
+
+  .beer-card__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+    box-shadow: 0 0.3rem 1.8rem 0.3rem rgba(0, 0, 0, 0.2);
+
+    &--front {
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+    }
   }
 
   .image-wrap {
