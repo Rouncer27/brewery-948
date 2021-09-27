@@ -44,14 +44,14 @@ const DirectionSection = ({
     <StyledSection>
       <div className="top-sec">
         <div className="top-sec__left">
-          <div className="our-story">
-            <Link to="/our-story">
-              <h2>Our Story</h2>
-              <div className="arrow-one">
+          <Link className="our-story" to="/our-story">
+            <h2>
+              Our Story
+              <span className="arrow-one">
                 <img src={arrowGIF} alt="" />
-              </div>
-            </Link>
-          </div>
+              </span>
+            </h2>
+          </Link>
           <div>
             <GatsbyImage
               image={ourStorySrc}
@@ -63,11 +63,9 @@ const DirectionSection = ({
         </div>
         <div className="top-sec__right">
           <div className="top-sec__right--top">
-            <div className="our-beers">
-              <h3>
-                <Link to="/our-beers">Our Beers</Link>
-              </h3>
-            </div>
+            <Link to="/our-beers" className="our-beers">
+              <span>Our Beers</span>
+            </Link>
             <div>
               <GatsbyImage
                 image={ourBeersSrc}
@@ -304,6 +302,7 @@ const StyledSection = styled.section`
       width: calc(100%);
       height: 185vw;
       margin: 2rem 0;
+      overflow: hidden;
 
       @media (min-width: 768px) {
         width: calc(33.333333% - 2rem);
@@ -314,18 +313,22 @@ const StyledSection = styled.section`
 
       .arrow-one {
         position: absolute;
-        bottom: 5%;
-        right: 12rem;
+        bottom: -5rem;
+        right: 3rem;
         z-index: 100;
         transform: rotate(-30deg);
       }
 
       .our-story {
+        ${H1White};
+        display: block;
+        text-transform: uppercase;
         position: absolute;
         top: 50%;
         left: 0;
         width: 100%;
         padding: 6.6rem;
+        transition: all 0.3s ease-out;
         transform: translate(0%, -50%);
         background-color: rgba(244, 62, 53, 0.65);
         text-align: center;
@@ -333,10 +336,13 @@ const StyledSection = styled.section`
 
         h2 {
           ${H1White};
+          position: relative;
+          width: 100%;
           display: block;
           margin: 0;
+          padding: 4rem 6rem;
           transition: all 0.3s ease-out;
-          text-transform: uppercase;
+          border: solid 0.4rem ${colors.white};
 
           &:hover {
             background-color: ${colors.white};
@@ -344,20 +350,11 @@ const StyledSection = styled.section`
           }
         }
 
-        a {
-          ${H1White};
-          display: block;
-          padding: 4rem 6rem;
-          border: solid 0.4rem ${colors.white};
-          text-transform: uppercase;
-
-          &:hover {
-            background-color: ${colors.white};
+        &:hover {
+          padding: 100% 6.6rem;
+          h2 {
             color: ${colors.black};
-
-            h2 {
-              color: ${colors.black};
-            }
+            background-color: ${colors.white};
           }
         }
       }
@@ -388,28 +385,54 @@ const StyledSection = styled.section`
         }
 
         .our-beers {
+          ${H1White};
+          display: block;
+          width: 100%;
+          padding: 2.5rem;
+          text-transform: uppercase;
           position: absolute;
           top: 50%;
           left: 0;
           width: 100%;
           transform: translate(0%, -50%);
-          background-color: rgba(36, 36, 36, 0.65);
+          transition: all 0.3s ease-out;
           text-align: center;
           z-index: 100;
 
-          h3 {
-            margin: 0;
+          span {
+            position: relative;
+            z-index: 99999;
           }
 
-          a {
-            ${H1White};
-            display: block;
+          &::after {
+            position: absolute;
             width: 100%;
-            padding: 2.5rem;
-            text-transform: uppercase;
+            height: 100%;
+            top: 0;
+            right: 0;
+            content: "";
+            background-color: rgba(36, 36, 36, 0.65);
+            transition: all 0.3s ease-out;
+            z-index: 1;
+          }
 
-            &:hover {
-              color: ${colors.colorSecondary};
+          &::before {
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            right: 0;
+            content: "";
+            background-color: #d57b2e;
+            transition: all 0.3s ease-out;
+            z-index: 10;
+          }
+
+          &:hover {
+            color: ${colors.black};
+
+            &::before {
+              width: 100%;
             }
           }
         }
