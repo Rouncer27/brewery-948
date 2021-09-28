@@ -3,13 +3,15 @@ import styled from "styled-components"
 import { colors, H3White, medWrapper, IntroWhite } from "../../styles/helpers"
 import IconMap from "../Icons/IconMap"
 
+import arrowGIF from "../../images/map-white.gif"
+
 const FindUs = ({ locations }) => {
   const items = locations.template.homeTemplate.locations
   return (
     <StyledSection>
       <div className="wrapper">
         <div className="icon">
-          <IconMap />
+          <img src={arrowGIF} alt="" />
         </div>
         <div className="content">
           <div className="content__title">

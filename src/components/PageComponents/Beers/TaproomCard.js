@@ -3,12 +3,19 @@ import React from "react"
 import styled from "styled-components"
 import { colors, H1White } from "../../../styles/helpers"
 
+import arrowGIF from "../../../images/loop-down-orange.gif"
+
 const TaproomCard = () => {
   return (
     <TaproomCardStyled className="beer-card">
       <div className="tap__inner">
         <p>
-          <Link to="/contact">Visit Our Taproom </Link>
+          <Link to="/contact">
+            <span>Visit Our Taproom</span>
+            <span className="icon-arrow">
+              <img src={arrowGIF} alt="" />
+            </span>
+          </Link>
         </p>
       </div>
     </TaproomCardStyled>
@@ -44,9 +51,19 @@ const TaproomCardStyled = styled.div`
   p,
   a {
     ${H1White};
+    position: relative;
     width: 100%;
     margin: 0;
+    padding-top: 5rem;
     text-transform: uppercase;
+
+    .icon-arrow {
+      position: absolute;
+      top: -5rem;
+      left: 30%;
+      width: 10rem;
+      z-index: 100;
+    }
   }
 
   a:hover {
