@@ -1,11 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { colors, H1White, H3White } from "../../styles/helpers"
 import { Link } from "gatsby"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import arrowGIF from "../../images/roundarrow.gif"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const DirectionSection = ({
   ourStory,
@@ -16,6 +20,96 @@ const DirectionSection = ({
   seasonalFeature,
   seasonalSlug,
 }) => {
+  useEffect(() => {
+    const topLeft = document.querySelector(".top-sec__left")
+    const topRightTop = document.querySelector(".top-sec__right--top")
+    const topRightBotLeft = document.querySelector(".top-sec__right--bot--left")
+    const topRightBotRight = document.querySelector(
+      ".top-sec__right--bot--right"
+    )
+
+    gsap.set(topRightTop, { x: 200, autoAlpha: 0 })
+    gsap.set(topRightBotLeft, { y: 200, autoAlpha: 0 })
+    gsap.set(topRightBotRight, { x: 100, autoAlpha: 0 })
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#top-trigger",
+          markers: false,
+          start: "top 35%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        [topLeft],
+        {
+          autoAlpha: 0,
+          y: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          y: 0,
+          ease: "power4.out",
+        }
+      )
+      .to(
+        [topRightTop, topRightBotLeft, topRightBotRight],
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          y: 0,
+          ease: "power4.out",
+          stagger: { each: 0.55 },
+        },
+        "start"
+      )
+
+    const botLeft = document.querySelector(".bot-sec__left")
+    const botRight = document.querySelector(".bot-sec__right")
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#bot-trigger",
+          markers: false,
+          start: "top 35%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        [botLeft],
+        {
+          autoAlpha: 0,
+          x: -150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          ease: "power4.out",
+        }
+      )
+      .fromTo(
+        [botRight],
+        {
+          autoAlpha: 0,
+          x: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          ease: "power4.out",
+        },
+        "start"
+      )
+  }, [])
+
   const ourStorySrc = getImage(
     ourStory.localFile.childImageSharp.gatsbyImageData
   )
@@ -42,7 +136,7 @@ const DirectionSection = ({
   const seasonalFeatureAlt = seasonalFeature.altText
   return (
     <StyledSection>
-      <div className="top-sec">
+      <div id="top-trigger" className="top-sec">
         <div className="top-sec__left">
           <Link className="our-story" to="/our-story">
             <h2>
@@ -108,7 +202,7 @@ const DirectionSection = ({
           </div>
         </div>
       </div>
-      <div className="bot-sec">
+      <div id="bot-trigger" className="bot-sec">
         <div className="bot-sec__left">
           <a
             className="shop-gear"
