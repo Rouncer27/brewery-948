@@ -9,6 +9,10 @@ import {
 } from "../../../styles/helpers"
 
 import IconPhone from "../../Icons/IconPhone"
+import submitToServer from "../../FormParts/functions/submitToServer"
+import FormSuccess from "../../FormParts/formModals/FormSuccess"
+import FormSubmit from "../../FormParts/formModals/FormSubmit"
+import FormErrors from "../../FormParts/formModals/FormErrors"
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -31,13 +35,73 @@ const ContactForm = () => {
       [event.target.name]: event.target.value,
     })
   }
+
+  const handleOnSubmit = async event => {
+    event.preventDefault()
+    setFormStatus({
+      ...formStatus,
+      submitting: true,
+    })
+    const formDataArray = Object.entries(formData)
+    const bodyFormData = new FormData()
+    formDataArray.forEach(field => {
+      bodyFormData.append(field[0], field[1])
+    })
+
+    const response = await submitToServer(566, bodyFormData)
+
+    if (!response.errors) {
+      setFormStatus({
+        ...formStatus,
+        submitting: false,
+        errorWarnDisplay: false,
+        success: true,
+        errors: [],
+      })
+    } else {
+      setFormStatus({
+        ...formStatus,
+        submitting: false,
+        errorWarnDisplay: true,
+        success: false,
+        errors: response.errorMessages,
+      })
+    }
+  }
+
+  const handleErrorModalClose = () => {
+    setFormStatus({
+      ...formStatus,
+      submitting: false,
+      errorWarnDisplay: false,
+      success: false,
+    })
+  }
+
+  const handleSuccessModalClose = () => {
+    setFormStatus({
+      ...formStatus,
+      submitting: false,
+      errorWarnDisplay: false,
+      success: false,
+      errors: [],
+    })
+
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+    })
+  }
+
   return (
     <SectionStyled>
       <div className="wrapper">
         <div className="icon">
           <IconPhone />
         </div>
-        <form>
+        <form onSubmit={handleOnSubmit}>
           <div className="title">
             <h2>Contact Form</h2>
             <p>
@@ -142,6 +206,15 @@ const ContactForm = () => {
           </div>
         </form>
       </div>
+      <FormSubmit isActive={formStatus.submitting} />
+      <FormSuccess
+        isActive={formStatus.success}
+        handleClose={handleSuccessModalClose}
+      />
+      <FormErrors
+        isActive={formStatus.errorWarnDisplay}
+        handleClose={handleErrorModalClose}
+      />
     </SectionStyled>
   )
 }

@@ -63,12 +63,8 @@ const BeersList = () => {
     const taproomInsert = getRandomRum(0, beers.length - 1)
     const quoteOneIndex = getRandomRum(0, quotes.length - 1)
     beers.splice(quoteOneInsert, 0, quotes[quoteOneIndex])
-
     beers.splice(taproomInsert, 0, { taproomLink: true })
-
     setBeersDisplay(beers)
-
-    console.log("beers: ", beers)
   }, [])
 
   return (

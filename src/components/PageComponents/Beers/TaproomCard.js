@@ -1,12 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import {
-  B1White,
-  colors,
-  colorSecondary,
-  H1White,
-} from "../../../styles/helpers"
+import { colors, H1White } from "../../../styles/helpers"
 
 const TaproomCard = () => {
   return (
