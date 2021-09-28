@@ -8,6 +8,7 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import arrowGIF from "../../images/roundarrow.gif"
+import arrowUpGIF from "../../images/loopup-big.gif"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -142,7 +143,7 @@ const DirectionSection = ({
             <h2>
               Our Story
               <span className="arrow-one">
-                <img src={arrowGIF} alt="" />
+                <img src={arrowUpGIF} alt="" />
               </span>
             </h2>
           </Link>
@@ -428,7 +429,9 @@ const StyledSection = styled.section`
         position: absolute;
         bottom: -5rem;
         right: 3rem;
+        width: 10rem;
         z-index: 100;
+
         transform: rotate(-30deg);
       }
 
