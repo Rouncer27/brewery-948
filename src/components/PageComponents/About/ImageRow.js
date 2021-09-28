@@ -1,14 +1,62 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const ImageRow = ({ left, right }) => {
   const leftDisplay = getImage(left.localFile.childImageSharp.gatsbyImageData)
   const leftAlt = left.altText
   const rightDisplay = getImage(right.localFile.childImageSharp.gatsbyImageData)
   const rightAlt = right.altText
+
+  useEffect(() => {
+    const imgLeft = document.querySelector(".image-left")
+    const imgRight = document.querySelector(".image-right")
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#row-trigger",
+          markers: false,
+          start: "top 35%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        [imgLeft],
+        {
+          autoAlpha: 0,
+          x: -150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          ease: "power4.out",
+        }
+      )
+      .fromTo(
+        [imgRight],
+        {
+          autoAlpha: 0,
+          x: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          ease: "power4.out",
+        },
+        "start"
+      )
+  }, [])
+
   return (
-    <DivStyled>
+    <DivStyled id="row-trigger">
       <div className="wrapper">
         <div className="image image-left">
           <GatsbyImage

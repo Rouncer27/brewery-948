@@ -1,8 +1,12 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { colors, H1White } from "../../../styles/helpers"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const LinksRow = ({ beer, events, taproom }) => {
   const beerDisplay = getImage(beer.localFile.childImageSharp.gatsbyImageData)
@@ -15,8 +19,39 @@ const LinksRow = ({ beer, events, taproom }) => {
     taproom.localFile.childImageSharp.gatsbyImageData
   )
   const taproomAlt = taproom.altText
+
+  useEffect(() => {
+    const imgLeft = document.querySelector(".beer-img")
+    const imgCenter = document.querySelector(".event-img")
+    const imgRight = document.querySelector(".taproom-img")
+
+    gsap.set(imgLeft, { x: -150, autoAlpha: 0 })
+    gsap.set(imgCenter, { y: 150, autoAlpha: 0 })
+    gsap.set(imgRight, { x: 150, autoAlpha: 0 })
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#img-trigger",
+          markers: false,
+          start: "top 35%",
+          toggleActions: "play none none none",
+        },
+      })
+      .to([imgLeft, imgCenter, imgRight], {
+        autoAlpha: 1,
+        y: 0,
+        x: 0,
+        duration: 1,
+        stagger: {
+          each: 0.25,
+          from: "center",
+        },
+      })
+  }, [])
+
   return (
-    <DivStyled>
+    <DivStyled id="img-trigger">
       <div className="wrapper">
         <div className="image beer-img">
           <Link to="/our-beers">Our Beers</Link>

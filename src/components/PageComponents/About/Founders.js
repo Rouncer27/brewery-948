@@ -3,7 +3,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { B1Black, H1Black, H3Orange, medWrapper } from "../../../styles/helpers"
 
-import arrowGIF from "../../../images/looparrow.gif"
+import arrowGIF from "../../../images/loop-down-big.gif"
 
 const Founders = ({ content, sketch }) => {
   const sketchDisplay = getImage(
@@ -63,6 +63,7 @@ const SectionStyled = styled.section`
       position: absolute;
       top: 15%;
       left: 25%;
+      width: 10rem;
       z-index: 1000;
     }
   }

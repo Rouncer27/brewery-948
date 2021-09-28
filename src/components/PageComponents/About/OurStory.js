@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import {
   colors,
@@ -9,11 +9,58 @@ import {
 } from "../../../styles/helpers"
 
 import IconBeaker from "../../Icons/IconBeaker"
-import arrowGIF from "../../../images/storyarrow.gif"
+import arrowGIF from "../../../images/story-arrow-big.gif"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const OurStory = ({ story }) => {
+  useEffect(() => {
+    const contentTop = document.querySelector(".content__content-top")
+    const contentBot = document.querySelector(".content__content-bot")
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#story-trigger",
+          markers: false,
+          start: "top 35%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        [contentTop],
+        {
+          autoAlpha: 0,
+          x: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          ease: "power4.out",
+        }
+      )
+      .fromTo(
+        [contentBot],
+        {
+          autoAlpha: 0,
+          y: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          y: 0,
+          ease: "power4.out",
+        },
+        "start+=0.25"
+      )
+  }, [])
+
   return (
-    <SectionStyled>
+    <SectionStyled id="story-trigger">
       <div className="wrapper">
         <div className="title">
           <h2>Our Story</h2>
@@ -67,6 +114,7 @@ const SectionStyled = styled.section`
       position: absolute;
       top: 10%;
       left: 30%;
+      width: 10rem;
       z-index: 1000;
     }
   }

@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { colors, H1White } from "../../styles/helpers"
 
-import arrowGIF from "../../images/looparrow.gif"
+import arrowGIF from "../../images/loop-down-orange.gif"
 
 const VisitTaproom = ({ taproom }) => {
   const imageDisplay = getImage(
@@ -121,6 +121,7 @@ const StyledSection = styled.section`
         position: absolute;
         top: -1rem;
         left: 34%;
+        width: 10rem;
         z-index: 100;
       }
 

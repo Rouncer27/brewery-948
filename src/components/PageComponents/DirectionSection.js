@@ -7,7 +7,6 @@ import { Link } from "gatsby"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-import arrowGIF from "../../images/roundarrow.gif"
 import arrowUpGIF from "../../images/loopup-big.gif"
 
 gsap.registerPlugin(ScrollTrigger)

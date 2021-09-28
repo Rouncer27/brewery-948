@@ -3,6 +3,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { B1Black, H1Black } from "../../../styles/helpers"
 
+import arrowGIF from "../../../images/step-arrow-2.gif"
+
 const Hours = ({ image, content }) => {
   const imgDisplay = getImage(image.localFile.childImageSharp.gatsbyImageData)
   const imgAlt = image.altText
@@ -22,6 +24,9 @@ const Hours = ({ image, content }) => {
         <div className="content">
           <h2>Visit Our Taproom</h2>
           <div dangerouslySetInnerHTML={{ __html: content }} />
+          <div className="arrow-one">
+            <img src={arrowGIF} alt="" />
+          </div>
         </div>
       </div>
     </SectionStyled>
@@ -71,6 +76,7 @@ const SectionStyled = styled.section`
   }
 
   .content {
+    position: relative;
     width: 100%;
     padding: 2rem;
     text-align: center;
@@ -88,6 +94,14 @@ const SectionStyled = styled.section`
       max-width: 50rem;
       margin-left: auto;
       margin-right: 5rem;
+    }
+
+    .arrow-one {
+      position: absolute;
+      top: -7.5rem;
+      left: 25%;
+      width: 10rem;
+      z-index: 1000;
     }
 
     h2 {
