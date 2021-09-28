@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import { colors } from "../../../styles/helpers"
 
 import BeerCard from "./BeerCard"
+import QuoteCard from "./QuoteCard"
+import TaproomCard from "./TaproomCard"
+import { getRandomRum } from "../../../utils/helperFunctions"
 
 const getData = graphql`
   {
@@ -36,17 +39,49 @@ const getData = graphql`
         }
       }
     }
+
+    quotes: allWpQuote {
+      edges {
+        node {
+          acfQuotes {
+            quote
+          }
+        }
+      }
+    }
   }
 `
 
 const BeersList = () => {
   const postsData = useStaticQuery(getData)
   const beers = postsData.beers.edges
+  const quotes = postsData.quotes.edges
+  const [beersDisplayed, setBeersDisplay] = useState([])
+
+  useEffect(() => {
+    const quoteOneInsert = getRandomRum(0, beers.length - 1)
+    const taproomInsert = getRandomRum(0, beers.length - 1)
+    const quoteOneIndex = getRandomRum(0, quotes.length - 1)
+    beers.splice(quoteOneInsert, 0, quotes[quoteOneIndex])
+
+    beers.splice(taproomInsert, 0, { taproomLink: true })
+
+    setBeersDisplay(beers)
+
+    console.log("beers: ", beers)
+  }, [])
+
   return (
     <DivStyled>
       <div className="wrapper">
-        {beers.map((beer, index) => {
-          return <BeerCard beer={beer.node} key={beer.node.key} />
+        {beersDisplayed.map((beer, index) => {
+          console.log("HERES THE BEERS", beer)
+          if (beer.taproomLink === true) {
+            return <TaproomCard key={index} />
+          } else if (beer.node.acfQuotes) {
+            return <QuoteCard quote={beer.node} key={beer.node.id} />
+          }
+          return <BeerCard beer={beer.node} key={beer.node.id} />
         })}
       </div>
     </DivStyled>

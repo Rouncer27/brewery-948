@@ -8,22 +8,20 @@ const BeerCard = ({ beer }) => {
   const imageSrc = getImage(
     beer.ourBeers.image.localFile.childImageSharp.gatsbyImageData
   )
-  const imageAlt = getImage(beer.ourBeers.image.altText)
+  const imageAlt = beer.ourBeers.image.altText
 
   const imageIngreSrc = getImage(
     beer.ourBeers.ingredientImage.localFile.childImageSharp.gatsbyImageData
   )
-  const imageIngreAlt = getImage(beer.ourBeers.ingredientImage.altText)
+  const imageIngreAlt = beer.ourBeers.ingredientImage.altText
   return (
     <BeerCardStyled
       className="beer-card"
-      to={`/our-beers/${beer.slug}`}
-      key={beer.key}
-      isflipped={isFlipped}
+      flipped={isFlipped ? "true" : undefined}
       onMouseOver={() => setIsFliiped(true)}
       onMouseLeave={() => setIsFliiped(false)}
     >
-      <div className="beer-card__inner">
+      <Link to={`/our-beers/${beer.slug}`} className="beer-card__inner">
         <div className="beer-card__face beer-card__face--front">
           <div className="image-wrap">
             <GatsbyImage image={imageSrc} alt={imageAlt} layout="fixed" />
@@ -38,12 +36,12 @@ const BeerCard = ({ beer }) => {
             />
           </div>
         </div>
-      </div>
+      </Link>
     </BeerCardStyled>
   )
 }
 
-const BeerCardStyled = styled(Link)`
+const BeerCardStyled = styled.div`
   position: relative;
   width: calc((100vw / 2) - 1rem);
   height: calc((100vw / 2) - 1rem);
@@ -59,6 +57,7 @@ const BeerCardStyled = styled(Link)`
   }
 
   .beer-card__inner {
+    display: block;
     width: 100%;
     height: 100%;
     transition: transform 1s;
@@ -66,7 +65,7 @@ const BeerCardStyled = styled(Link)`
     cursor: pointer;
     position: relative;
     transform: ${props =>
-      props.isflipped ? "rotateY(180deg)" : "rotateY(0deg)"};
+      props.flipped ? "rotateY(180deg)" : "rotateY(0deg)"};
   }
 
   .beer-card__face {
