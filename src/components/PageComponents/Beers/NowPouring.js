@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { H2White, standardWrapper, Btn1Orange } from "../../../styles/helpers"
 
 import IconBeakerThree from "../../Icons/IconBeakerThree"
+import arrowGIF from "../../../images/story-lab.gif"
 
 const NowPouring = ({ content, image }) => {
   const imgDisplay = getImage(image.localFile.childImageSharp.gatsbyImageData)
@@ -29,7 +30,7 @@ const NowPouring = ({ content, image }) => {
             </div>
             <div className="content__link">
               <div className="content__link--icon">
-                <IconBeakerThree />
+                <img src={arrowGIF} alt="" />
               </div>
               <a target="_blank" target="_blank" href="https://948brewing.ca/">
                 Now Pouring
