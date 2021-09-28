@@ -2,6 +2,14 @@ import React from "react"
 import styled from "styled-components"
 import { HashLoader } from "react-spinners"
 import { colors, H3Blueberry } from "../../../styles/helpers"
+import Lottie from "react-lottie"
+import * as formBeers from "../../../styles/elements/lottieAnimations/beers.json"
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: formBeers.default,
+}
 
 const FormSubmitModal = styled.div`
   display: block;
@@ -83,7 +91,14 @@ const FormSubmit = ({ isActive }) => {
       <div className="modalInner">
         <div className="modalInner__content">
           <div className="modalInner__content--loader">
-            <HashLoader size={75} color={"#F9A11B"} />
+            <div>
+              <Lottie
+                options={defaultOptions}
+                isPaused={!isActive}
+                height={300}
+                width={300}
+              />
+            </div>
           </div>
           <h2>
             Thank you for submitting your form, <br />
