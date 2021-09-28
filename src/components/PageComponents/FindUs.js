@@ -26,8 +26,8 @@ const FindUs = ({ locations }) => {
                 if (
                   item.website
                     ? (locationContent = (
-                        <>
-                          <li key={index}>
+                        <React.Fragment key={index}>
+                          <li>
                             <a
                               target="_blank"
                               rel="noreferrer"
@@ -37,13 +37,13 @@ const FindUs = ({ locations }) => {
                             </a>
                           </li>
                           <span> {seperator} </span>
-                        </>
+                        </React.Fragment>
                       ))
                     : (locationContent = (
-                        <>
-                          <li key={index}>{item.name}</li>
+                        <React.Fragment key={index}>
+                          <li>{item.name}</li>
                           <span> {seperator} </span>
-                        </>
+                        </React.Fragment>
                       ))
                 )
                   return locationContent

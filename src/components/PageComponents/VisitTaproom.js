@@ -22,14 +22,12 @@ const VisitTaproom = ({ taproom }) => {
         />
       </div>
       <div className="hero-content">
-        <div className="hero-content__title">
-          <Link to="/taproom">
-            <h2>Visit Our Taproom</h2>
-            <div className="arrow-one">
-              <img src={arrowGIF} alt="" />
-            </div>
-          </Link>
-        </div>
+        <Link className="hero-content__title" to="/taproom">
+          <h2>Visit Our Taproom</h2>
+          <div className="arrow-one">
+            <img src={arrowGIF} alt="" />
+          </div>
+        </Link>
       </div>
     </StyledSection>
   )
@@ -83,14 +81,40 @@ const StyledSection = styled.section`
         width: calc(65%);
       }
 
+      &::after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        content: "";
+        background-color: rgba(36, 36, 36, 0.4);
+        transition: all 0.3s ease-out;
+        z-index: 1;
+      }
+
+      &::before {
+        position: absolute;
+        width: 0;
+        height: 100%;
+        top: 0;
+        right: 0;
+        content: "";
+        background-color: rgba(244, 62, 53, 0.4);
+        transition: all 0.3s ease-out;
+        z-index: 10;
+      }
+
       h2 {
         ${H1White};
+        position: relative;
         display: block;
         margin: 0;
         padding: 7rem;
         text-align: center;
         text-transform: uppercase;
         transition: all 0.3s ease-out;
+        z-index: 999999;
       }
 
       .arrow-one {
@@ -100,11 +124,13 @@ const StyledSection = styled.section`
         z-index: 100;
       }
 
-      a {
-        &:hover {
-          h2 {
-            color: ${colors.colorSecondary};
-          }
+      &:hover {
+        h2 {
+          color: ${colors.black};
+        }
+
+        &::before {
+          width: 100%;
         }
       }
     }
