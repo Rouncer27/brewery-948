@@ -8,8 +8,9 @@ import {
   B1White,
 } from "../../../styles/helpers"
 
-import IconBeaker from "../../Icons/IconBeaker"
 import arrowGIF from "../../../images/story-arrow-big.gif"
+import beakerGIF from "../../../images/story-flask.gif"
+
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -69,7 +70,7 @@ const OurStory = ({ story }) => {
           </div>
         </div>
         <div className="icon">
-          <IconBeaker />
+          <img src={beakerGIF} alt="" />
         </div>
         <div className="content">
           <div
@@ -129,7 +130,6 @@ const SectionStyled = styled.section`
       max-width: 100%;
       margin-right: 4rem;
       margin-bottom: 0;
-      padding: 2rem;
     }
   }
 

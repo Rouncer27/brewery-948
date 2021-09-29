@@ -10,6 +10,7 @@ import {
 } from "../../../styles/helpers"
 
 import IconBeakerTwo from "../../Icons/IconBeakerTwo"
+import beakerGIF from "../../../images/story-triangle-flask.gif"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -77,7 +78,7 @@ const NameStory = ({ top, bot, slug }) => {
     <DivStyled id="journey-trigger">
       <div className="wrapper">
         <div className="icon">
-          <IconBeakerTwo />
+          <img src={beakerGIF} alt="" />
         </div>
         <div className="content">
           <div
@@ -112,11 +113,10 @@ const DivStyled = styled.div`
     margin-bottom: 5rem;
 
     @media (min-width: 768px) {
-      width: calc(20% - 4rem);
+      width: calc(20% - 2rem);
       max-width: 100%;
-      margin-right: 4rem;
+      margin-right: 2rem;
       margin-bottom: 0;
-      padding: 2rem;
     }
   }
 

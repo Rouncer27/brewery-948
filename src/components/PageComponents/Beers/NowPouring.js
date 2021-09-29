@@ -3,7 +3,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { H2White, standardWrapper, Btn1Orange } from "../../../styles/helpers"
 
-import IconBeakerThree from "../../Icons/IconBeakerThree"
 import arrowGIF from "../../../images/story-lab2.gif"
 
 const NowPouring = ({ content, image }) => {
