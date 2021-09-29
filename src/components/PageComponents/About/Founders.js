@@ -1,17 +1,80 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { B1Black, H1Black, H3Orange, medWrapper } from "../../../styles/helpers"
 
 import arrowGIF from "../../../images/loop-down-big.gif"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
 const Founders = ({ content, sketch }) => {
+  useEffect(() => {
+    const contentTop = document.querySelector(".content__title")
+    const contentBot = document.querySelector(".content__body")
+    const sketch = document.querySelector(".sketch")
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#founder-trigger",
+          markers: false,
+          start: "top 35%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        [contentTop],
+        {
+          autoAlpha: 0,
+          x: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          ease: "power4.out",
+        }
+      )
+      .fromTo(
+        [contentBot],
+        {
+          autoAlpha: 0,
+          y: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          y: 0,
+          ease: "power4.out",
+        },
+        "start+=0.25"
+      )
+      .fromTo(
+        [sketch],
+        {
+          autoAlpha: 0,
+          x: -200,
+        },
+        {
+          autoAlpha: 1,
+          duration: 2,
+          x: 0,
+          ease: "power4.out",
+        },
+        "start"
+      )
+  }, [])
+
   const sketchDisplay = getImage(
     sketch.localFile.childImageSharp.gatsbyImageData
   )
   const sketchAlt = sketch.altText
   return (
-    <SectionStyled>
+    <SectionStyled id="founder-trigger">
       <div className="wrapper">
         <div className="title">
           <h2>948 Founders</h2>
@@ -28,7 +91,9 @@ const Founders = ({ content, sketch }) => {
           />
         </div>
         <div className="content">
-          <h3>Dave + Kyle, Co-Founders</h3>
+          <div className="content__title">
+            <h3>Dave + Kyle, Co-Founders</h3>
+          </div>
 
           <div
             className="content__body"

@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import {
   medWrapper,
@@ -10,10 +10,71 @@ import {
 } from "../../../styles/helpers"
 
 import IconBeakerTwo from "../../Icons/IconBeakerTwo"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const NameStory = ({ top, bot, slug }) => {
+  useEffect(() => {
+    const contentTop = document.querySelector(".content__top")
+    const contentBot = document.querySelector(".content__bot")
+    const contentLink = document.querySelector(".content__link")
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#journey-trigger",
+          markers: false,
+          start: "top 35%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        [contentTop],
+        {
+          autoAlpha: 0,
+          x: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          ease: "power4.out",
+        }
+      )
+      .fromTo(
+        [contentBot],
+        {
+          autoAlpha: 0,
+          y: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          y: 0,
+          ease: "power4.out",
+        },
+        "start+=0.25"
+      )
+      .fromTo(
+        [contentLink],
+        {
+          autoAlpha: 0,
+          x: 200,
+        },
+        {
+          autoAlpha: 1,
+          duration: 2,
+          x: 0,
+          ease: "power4.out",
+        },
+        "start+=0.5"
+      )
+  }, [])
   return (
-    <DivStyled>
+    <DivStyled id="journey-trigger">
       <div className="wrapper">
         <div className="icon">
           <IconBeakerTwo />

@@ -133,11 +133,12 @@ const SectionStyled = styled.section`
 
       &--icon {
         max-width: 25rem;
-        margin-bottom: 4rem;
+        margin-bottom: 0;
       }
 
       a {
         ${Btn1Orange};
+        background-color: rgba(36, 36, 36, 0.75);
       }
     }
   }
