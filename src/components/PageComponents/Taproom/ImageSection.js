@@ -1,10 +1,14 @@
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { Btn1Grey, colors, H2White, H3White } from "../../../styles/helpers"
 
 import HeroImage from "../Hero/HeroImage"
+
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
 
 const ImageSection = ({
   leftTallImage,
@@ -18,6 +22,96 @@ const ImageSection = ({
   emailAddress,
   bottomHeroImage,
 }) => {
+  useEffect(() => {
+    const topLeft = document.querySelector(".top-sec__left")
+    const topRightTop = document.querySelector(".top-sec__right--top")
+    const topRightBotLeft = document.querySelector(".top-sec__right--bot--left")
+    const topRightBotRight = document.querySelector(
+      ".top-sec__right--bot--right"
+    )
+
+    gsap.set(topRightTop, { x: 200, autoAlpha: 0 })
+    gsap.set(topRightBotLeft, { y: 200, autoAlpha: 0 })
+    gsap.set(topRightBotRight, { x: 100, autoAlpha: 0 })
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#top-tap-trigger",
+          markers: false,
+          start: "top 35%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        [topLeft],
+        {
+          autoAlpha: 0,
+          y: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          y: 0,
+          ease: "power4.out",
+        }
+      )
+      .to(
+        [topRightTop, topRightBotLeft, topRightBotRight],
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          y: 0,
+          ease: "power4.out",
+          stagger: { each: 0.55 },
+        },
+        "start"
+      )
+
+    const botLeft = document.querySelector(".bot-sec__left")
+    const botRight = document.querySelector(".bot-sec__right")
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#bot-tap-trigger",
+          markers: false,
+          start: "top 35%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        [botLeft],
+        {
+          autoAlpha: 0,
+          x: -150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          ease: "power4.out",
+        }
+      )
+      .fromTo(
+        [botRight],
+        {
+          autoAlpha: 0,
+          x: 150,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1,
+          x: 0,
+          ease: "power4.out",
+        },
+        "start"
+      )
+  }, [])
+
   const leftTallSrc = getImage(
     leftTallImage.localFile.childImageSharp.gatsbyImageData
   )
@@ -49,7 +143,7 @@ const ImageSection = ({
   const bottomRightAlt = bottomRightImage.altText
   return (
     <StyledSection>
-      <div className="top-sec">
+      <div id="top-tap-trigger" className="top-sec">
         <div className="top-sec__left">
           <div>
             <GatsbyImage
@@ -96,7 +190,7 @@ const ImageSection = ({
           </div>
         </div>
       </div>
-      <div className="bot-sec">
+      <div id="bot-tap-trigger" className="bot-sec">
         <div className="bot-sec__left">
           <div className="img-content">
             <div dangerouslySetInnerHTML={{ __html: contactInfo }} />
