@@ -8,6 +8,7 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import arrowUpGIF from "../../images/loopup-big.gif"
+import arrowDownGIF from "../../images/loop-down-orange.gif"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -158,7 +159,12 @@ const DirectionSection = ({
         <div className="top-sec__right">
           <div className="top-sec__right--top">
             <Link to="/our-beers" className="our-beers">
-              <span>Our Beers</span>
+              <span>
+                Our Beers
+                <span className="arrow-one">
+                  <img src={arrowDownGIF} alt="" />
+                </span>
+              </span>
             </Link>
             <div>
               <GatsbyImage
@@ -501,6 +507,7 @@ const StyledSection = styled.section`
 
         .our-beers {
           ${H1White};
+          position: relative;
           display: block;
           width: 100%;
           padding: 2.5rem;
@@ -513,6 +520,15 @@ const StyledSection = styled.section`
           transition: all 0.3s ease-out;
           text-align: center;
           z-index: 100;
+
+          .arrow-one {
+            position: absolute;
+            top: -12rem;
+            left: 0rem;
+            width: 10rem;
+            z-index: 100;
+            transform: rotate(0deg);
+          }
 
           span {
             position: relative;

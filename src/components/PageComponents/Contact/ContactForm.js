@@ -182,7 +182,7 @@ const ContactForm = () => {
           </InputField>
           <InputField>
             <label htmlFor="phone">
-              phone number <span className="required">(required)</span>
+              phone number
               <span
                 className={`error-message ${
                   formStatus.errors.findIndex(
@@ -198,14 +198,12 @@ const ContactForm = () => {
                 value={formData.phone}
                 id="phone"
                 onChange={handleOnChange}
-                aria-required="true"
-                required
               />
             </label>
           </InputField>
           <InputField size="full">
             <label htmlFor="message">
-              Add a message <span className="required">(required)</span>
+              Comments or Questions <span className="required">(required)</span>
               <span
                 className={`error-message${
                   formStatus.errors.findIndex(
@@ -215,7 +213,7 @@ const ContactForm = () => {
                     : ""
                 }`}
               >
-                Add a message
+                Add a comment or question
               </span>
               <textarea
                 name="message"

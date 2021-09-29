@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { colors, H3Blueberry } from "../../../styles/helpers"
+import { colors, H3Black } from "../../../styles/helpers"
 import Lottie from "react-lottie"
 import * as formSuccess from "../../../styles/elements/lottieAnimations/formSuccess.json"
 
@@ -97,7 +97,7 @@ const SuccessModal = styled.div`
       }
 
       h2 {
-        ${H3Blueberry};
+        ${H3Black};
         width: 100%;
         text-align: center;
       }

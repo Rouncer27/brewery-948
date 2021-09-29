@@ -22,7 +22,7 @@ const Hours = ({ image, content }) => {
           </div>
         </div>
         <div className="content">
-          <h2>Visit Our Taproom</h2>
+          <h2>Taproom Hours</h2>
           <div dangerouslySetInnerHTML={{ __html: content }} />
           <div className="arrow-one">
             <img src={arrowGIF} alt="" />

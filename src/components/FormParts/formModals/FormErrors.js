@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { colors, H3Blueberry } from "../../../styles/helpers"
+import { colors, H3Black } from "../../../styles/helpers"
 import Lottie from "react-lottie"
 import * as formError from "../../../styles/elements/lottieAnimations/formError.json"
 
@@ -91,7 +91,7 @@ const ErrorModal = styled.div`
         width: 100%;
       }
       h2 {
-        ${H3Blueberry};
+        ${H3Black};
         width: 100%;
         text-align: center;
       }

@@ -165,10 +165,16 @@ const ArticleCard = styled(Link)`
 
     h2 {
       ${IntroOrange};
+      transition: all 0.3s ease-out;
     }
 
     p {
       ${Nav1White};
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        color: ${colors.white};
+      }
     }
   }
 
@@ -190,6 +196,15 @@ const ArticleCard = styled(Link)`
         width: 100%;
         height: 100%;
       }
+    }
+  }
+
+  &:hover {
+    background-color: ${colors.colorTertiary} !important;
+    box-shadow: 0.5rem 1rem 0.8rem 0.3rem rgba(0, 0, 0, 0.5);
+
+    h2 {
+      color: ${colors.colorAccent};
     }
   }
 `
