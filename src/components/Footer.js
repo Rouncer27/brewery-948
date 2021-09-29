@@ -130,6 +130,10 @@ const Footer = () => {
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
+          {" -- "}
+          <Link to="/disclaimer">Disclaimer</Link>
+          {" | "}
+          <Link to="/privacy-policy">Privacy Policy</Link>
         </p>
       </div>
     </StyledFooter>
@@ -158,6 +162,10 @@ const StyledFooter = styled.footer`
     a {
       ${Nav1White};
       margin: 0;
+    }
+
+    p:hover {
+      color: ${colors.white};
     }
   }
 
