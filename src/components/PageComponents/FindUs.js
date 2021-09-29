@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { colors, H3White, medWrapper, IntroWhite } from "../../styles/helpers"
-import IconMap from "../Icons/IconMap"
 
 import arrowGIF from "../../images/map-white.gif"
 

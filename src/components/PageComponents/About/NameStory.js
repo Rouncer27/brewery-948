@@ -9,7 +9,6 @@ import {
   Btn1Orange,
 } from "../../../styles/helpers"
 
-import IconBeakerTwo from "../../Icons/IconBeakerTwo"
 import beakerGIF from "../../../images/story-triangle-flask.gif"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"

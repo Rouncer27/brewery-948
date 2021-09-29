@@ -71,7 +71,6 @@ const BeersList = () => {
     <DivStyled>
       <div className="wrapper">
         {beersDisplayed.map((beer, index) => {
-          console.log("HERES THE BEERS", beer)
           if (beer.taproomLink === true) {
             return <TaproomCard key={index} />
           } else if (beer.node.acfQuotes) {

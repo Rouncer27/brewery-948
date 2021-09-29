@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { B1White, colors } from "../../../styles/helpers"
 
 const QuoteCard = ({ quote }) => {
-  console.log(quote)
   return (
     <QuoteCardStyled className="beer-card">
       <div className="quote__inner">
