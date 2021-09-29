@@ -20,6 +20,7 @@ const ContactForm = () => {
     lastName: "",
     email: "",
     phone: "",
+    message: "",
   })
 
   const [formStatus, setFormStatus] = useState({
@@ -92,6 +93,7 @@ const ContactForm = () => {
       lastName: "",
       email: "",
       phone: "",
+      message: "",
     })
   }
 
@@ -201,6 +203,31 @@ const ContactForm = () => {
               />
             </label>
           </InputField>
+          <InputField size="full">
+            <label htmlFor="message">
+              Add a message <span className="required">(required)</span>
+              <span
+                className={`error-message${
+                  formStatus.errors.findIndex(
+                    error => error.idref === "message"
+                  ) !== -1
+                    ? " error-active"
+                    : ""
+                }`}
+              >
+                Add a message
+              </span>
+              <textarea
+                name="message"
+                value={formData.message}
+                id="message"
+                onChange={handleOnChange}
+                rows={6}
+                // aria-required="true"
+                // required
+              />
+            </label>
+          </InputField>
           <div className="btn-submit">
             <button>Submit</button>
           </div>
@@ -286,7 +313,8 @@ const InputField = styled.div`
   padding: 1rem 0;
 
   @media (min-width: 768px) {
-    width: calc(50% - 4rem);
+    width: ${props =>
+      props.size === "full" ? "calc(100% - 4rem)" : "calc(50% - 4rem)"};
     margin: 1rem 2rem;
   }
 
