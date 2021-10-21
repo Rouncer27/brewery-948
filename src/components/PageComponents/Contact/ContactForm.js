@@ -227,7 +227,7 @@ const ContactForm = () => {
             </label>
           </InputField>
           <div className="btn-submit">
-            <button>Submit</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>

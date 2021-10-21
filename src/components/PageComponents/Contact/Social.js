@@ -80,7 +80,7 @@ const Social = ({ url }) => {
             <a rel="noreferrer" target="_blank" href={url}>
               Click here
             </a>{" "}
-            to leave us feedback on google so we can learn more about your
+            to leave us feedback on Google so we can learn more about your
             experience.
           </p>
         </div>

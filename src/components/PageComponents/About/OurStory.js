@@ -161,6 +161,17 @@ const SectionStyled = styled.section`
         &:last-of-type {
           margin: 0;
         }
+
+        a {
+          ${B1White};
+          transition: all 0.3s;
+          font-size: 1em;
+          font-weight: bold;
+
+          &:hover {
+            color: ${colors.colorSecondary};
+          }
+        }
       }
     }
   }

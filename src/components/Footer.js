@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
         <div className="footer-section footer-double">
           <div>
-            <h3>Stay in the kown with 948 Brewing Company</h3>
+            <h3>Stay in the know with 948 Brewing Company</h3>
           </div>
           <div dangerouslySetInnerHTML={{ __html: stayInTheKnow }} />
         </div>
