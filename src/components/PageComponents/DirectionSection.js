@@ -232,7 +232,7 @@ const DirectionSection = ({
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://948brewing.ca/"
+            href="https://menu.948brewing.ca/"
             className="now-pouring"
           >
             <span>Now Pouring</span>

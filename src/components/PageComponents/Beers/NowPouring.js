@@ -31,7 +31,11 @@ const NowPouring = ({ content, image }) => {
               <div className="content__link--icon">
                 <img src={arrowGIF} alt="" />
               </div>
-              <a rel="noreferrer" target="_blank" href="https://948brewing.ca/">
+              <a
+                rel="noreferrer"
+                target="_blank"
+                href="https://menu.948brewing.ca/"
+              >
                 Now Pouring
               </a>
             </div>

@@ -34,7 +34,7 @@ const Taproom = () => {
       <HeroImage bgImg={image} />
       <HeroConentFour
         content="<p>Visit us in our Taproom.<br/> Beer is always better with friends.</p>"
-        slug="https://948brewing.ca/"
+        slug="https://menu.948brewing.ca/"
         external={true}
         btnText="Now Pouring"
       />
