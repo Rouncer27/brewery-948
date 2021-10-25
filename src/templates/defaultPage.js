@@ -15,7 +15,7 @@ const DefaultPage = props => {
       <Seo
         title={seoInfo.seoFields.swbThemeMetaTitle}
         description={seoInfo.seoFields.swbThemeDescription}
-        metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        //metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
         location={props.location.pathname}
       />
       <TempDefault page={page} />
