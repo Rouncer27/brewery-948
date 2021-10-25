@@ -1,10 +1,11 @@
-import * as React from "react"
+import React from "react"
 import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
+import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import SchemaOrg from "./SchemaOrg"
 
-function Seo({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+function Seo({ description, lang, meta, title, metaImg, location }) {
+  const { site, siteLogo, defaultFb } = useStaticQuery(
     graphql`
       query {
         site {
@@ -12,7 +13,18 @@ function Seo({ description, lang, meta, title }) {
             title
             description
             author
+            siteLogo
+            metaImg
+            siteUrl
           }
+        }
+
+        siteLogo: file(relativePath: { eq: "948-logo.png" }) {
+          publicURL
+        }
+
+        defaultFb: file(relativePath: { eq: "948brewing-default.png" }) {
+          publicURL
         }
       }
     `
