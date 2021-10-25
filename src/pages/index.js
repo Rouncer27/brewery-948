@@ -7,10 +7,16 @@ import TempHome from "../components/Templates/TempHome"
 
 const IndexPage = props => {
   const { hero, direction, taproom, locations } = props.data
+  const seoInfo = props.data.seoInfo
 
   return (
     <Layout>
-      <Seo title="Home" />
+      <Seo
+        title={seoInfo.seoFields.swbThemeMetaTitle}
+        description={seoInfo.seoFields.swbThemeDescription}
+        metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        location={props.location.pathname}
+      />
       <TempHome
         hero={hero}
         direction={direction}
@@ -23,6 +29,18 @@ const IndexPage = props => {
 
 export const homeQuery = graphql`
   {
+    seoInfo: wpPage(slug: { eq: "home" }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
+
     hero: wpPage(slug: { eq: "home" }) {
       template {
         ... on WpTemplate_Home {

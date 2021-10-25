@@ -7,9 +7,15 @@ import TempAbout from "../components/Templates/TempAbout"
 
 const About = props => {
   const { hero, story, founders, imageRow, nameStory, linkImage } = props.data
+  const seoInfo = props.data.seoInfo
   return (
     <Layout>
-      <Seo title="About Page" />
+      <Seo
+        title={seoInfo.seoFields.swbThemeMetaTitle}
+        description={seoInfo.seoFields.swbThemeDescription}
+        metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        location={props.location.pathname}
+      />
       <TempAbout
         hero={hero}
         story={story}
@@ -24,6 +30,18 @@ const About = props => {
 
 export const aboutTempQuery = graphql`
   query aboutTempPage($id: String!) {
+    seoInfo: wpPage(id: { eq: $id }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
+
     hero: wpPage(id: { eq: $id }) {
       template {
         ... on WpTemplate_About {

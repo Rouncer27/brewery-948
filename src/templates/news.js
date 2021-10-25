@@ -7,9 +7,15 @@ import TempNews from "../components/Templates/TempNews"
 
 const News = props => {
   const { intro } = props.data
+  const seoInfo = props.data.seoInfo
   return (
     <Layout>
-      <Seo title="Beers Page" />
+      <Seo
+        title={seoInfo.seoFields.swbThemeMetaTitle}
+        description={seoInfo.seoFields.swbThemeDescription}
+        metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        location={props.location.pathname}
+      />
       <TempNews intro={intro} />
     </Layout>
   )
@@ -17,6 +23,18 @@ const News = props => {
 
 export const newsTempQuery = graphql`
   query newsTempPage($id: String!) {
+    seoInfo: wpPage(id: { eq: $id }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
+
     intro: wpPage(id: { eq: $id }) {
       template {
         ... on WpTemplate_News {

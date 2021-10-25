@@ -7,9 +7,15 @@ import TempContact from "../components/Templates/TempContact"
 
 const Contact = props => {
   const { visit, hours, rent, social } = props.data
+  const seoInfo = props.data.seoInfo
   return (
     <Layout>
-      <Seo title="Contact Page" />
+      <Seo
+        title={seoInfo.seoFields.swbThemeMetaTitle}
+        description={seoInfo.seoFields.swbThemeDescription}
+        metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
+        location={props.location.pathname}
+      />
       <TempContact visit={visit} hours={hours} rent={rent} social={social} />
     </Layout>
   )
@@ -17,6 +23,18 @@ const Contact = props => {
 
 export const contactTempQuery = graphql`
   query contactTempPage($id: String!) {
+    seoInfo: wpPage(id: { eq: $id }) {
+      seoFields {
+        swbThemeDescription
+        swbThemeMetaTitle
+        swbThemeImage {
+          localFile {
+            relativePath
+          }
+        }
+      }
+    }
+
     visit: wpPage(id: { eq: $id }) {
       template {
         ... on WpTemplate_Contact {
