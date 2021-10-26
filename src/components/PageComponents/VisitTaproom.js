@@ -25,7 +25,7 @@ const VisitTaproom = ({ taproom }) => {
         <Link className="hero-content__title" to="/taproom">
           <h2>Visit Our Taproom</h2>
           <div className="arrow-one">
-            <img src={arrowGIF} alt="" />
+            <img src={arrowGIF} alt="An illustration of a arrow" />
           </div>
         </Link>
       </div>

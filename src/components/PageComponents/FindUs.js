@@ -10,7 +10,7 @@ const FindUs = ({ locations }) => {
     <StyledSection>
       <div className="wrapper">
         <div className="icon">
-          <img src={arrowGIF} alt="" />
+          <img src={arrowGIF} alt="Icon of a map with a pin." />
         </div>
         <div className="content">
           <div className="content__title">

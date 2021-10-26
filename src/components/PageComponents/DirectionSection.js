@@ -143,7 +143,7 @@ const DirectionSection = ({
             <h2>
               Our Story
               <span className="arrow-one">
-                <img src={arrowUpGIF} alt="" />
+                <img src={arrowUpGIF} alt="An illustration of a black arrow" />
               </span>
             </h2>
           </Link>
@@ -162,7 +162,10 @@ const DirectionSection = ({
               <span>
                 Our Beers
                 <span className="arrow-one">
-                  <img src={arrowDownGIF} alt="" />
+                  <img
+                    src={arrowDownGIF}
+                    alt="An illustration of a orange arrow"
+                  />
                 </span>
               </span>
             </Link>
