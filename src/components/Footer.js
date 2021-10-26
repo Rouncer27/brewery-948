@@ -127,9 +127,23 @@ const Footer = () => {
       </div>
       <div className="footer-copy">
         <p>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
+          948 Brewing Company © {new Date().getFullYear()}. Designed, and
+          developed by{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://switchbackcreative.ca/"
+          >
+            Switchback Creative
+          </a>
+          , Built with ♡ and{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.gatsbyjs.com"
+          >
+            Gatsby
+          </a>
           {" -- "}
           <Link to="/disclaimer">Disclaimer</Link>
           {" | "}
