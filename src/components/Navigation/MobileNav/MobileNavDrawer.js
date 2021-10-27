@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import { colors } from "../../../styles/helpers"
-// import MainLogo from "../../Logos/MainLogo"
+import MainLogo from "../../Logos/MainLogo"
 import MobileNavContainer from "./MobileNavContainer"
 
 const getData = graphql`
@@ -29,9 +29,9 @@ const MobileNavDrawer = ({ isOpen, setIsOpen }) => {
   return (
     <NavDrawer isOpen={isOpen}>
       <div className="wrapper">
-        {/* <div className="mobileLogo">
+        <div className="mobileLogo">
           <MainLogo />
-        </div> */}
+        </div>
         <MobileNavContainer navitems={menuItems} setIsOpen={setIsOpen} />
       </div>
     </NavDrawer>
@@ -49,13 +49,7 @@ const NavDrawer = styled.div`
   height: 100vh;
   transition: all 0.3s ease-in;
   transform: translateX(${props => (props.isOpen ? "0%" : "-100%")});
-  background: ${colors.colorPrimary};
-  background-image: linear-gradient(
-    to bottom,
-    ${colors.colorTertiary} 0%,
-    ${colors.colorPrimary} 50%,
-    ${colors.colorPrimary} 100%
-  );
+  background: #000;
   opacity: ${props => (props.isOpen ? 1 : 0)};
   z-index: ${props => (props.isOpen ? 9999999 : -9999999)};
   overflow-y: scroll;
@@ -79,18 +73,9 @@ const NavDrawer = styled.div`
   }
 
   .mobileLogo {
-    width: 100%;
+    margin: auto;
     margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-
-    .gatsby-image-wrapper {
-      max-width: 25rem;
-      margin: 0 auto;
-
-      @media (min-width: 768px) {
-        max-width: 100%;
-      }
-    }
+    max-width: 20rem !important;
   }
 `
 
