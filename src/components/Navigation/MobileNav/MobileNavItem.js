@@ -21,7 +21,13 @@ const MobileNavItem = ({ item }) => {
   }
   return (
     <MobileNavItemStyled>
-      <Link to={`/${slug === "home" ? "" : slug}`}>{item.label}</Link>
+      {item.label === "Shop" ? (
+        <a target="_blank" rel="noreferrer" href={item.url}>
+          {item.label}
+        </a>
+      ) : (
+        <Link to={`/${slug === "home" ? "" : slug}`}>{item.label}</Link>
+      )}
       {item.subItems && item.subItems.length > 0 && (
         <div className="subContainer">
           <button
