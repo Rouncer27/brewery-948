@@ -16,6 +16,7 @@ const getData = graphql`
           slug
           id
           ourBeers {
+            beerType
             image {
               altText
               localFile {
@@ -52,7 +53,7 @@ const getData = graphql`
   }
 `
 
-const BeersList = () => {
+const BeersList = ({ beersDisplay }) => {
   const postsData = useStaticQuery(getData)
   const beers = postsData.beers.edges
   const quotes = postsData.quotes.edges
@@ -76,7 +77,15 @@ const BeersList = () => {
           } else if (beer.node.acfQuotes) {
             return <QuoteCard quote={beer.node} key={beer.node.id} />
           }
-          return <BeerCard beer={beer.node} key={beer.node.id} />
+
+          if (
+            beer.node.ourBeers.beerType ===
+            beersDisplay.template.beersTemplate.beersDisplayType
+          ) {
+            return <BeerCard beer={beer.node} key={beer.node.id} />
+          } else {
+            return null
+          }
         })}
       </div>
     </DivStyled>

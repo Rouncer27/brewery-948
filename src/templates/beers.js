@@ -6,7 +6,7 @@ import Seo from "../components/Seo"
 import TempBeers from "../components/Templates/TempBeers"
 
 const beers = props => {
-  const { intro, pouring, rent } = props.data
+  const { intro, pouring, rent, beersDisplay } = props.data
   const seoInfo = props.data.seoInfo
   return (
     <Layout>
@@ -16,7 +16,12 @@ const beers = props => {
         //metaImg={seoInfo.seoFields.swbThemeImage.localFile.relativePath}
         location={props.location.pathname}
       />
-      <TempBeers intro={intro} pouring={pouring} rent={rent} />
+      <TempBeers
+        intro={intro}
+        pouring={pouring}
+        rent={rent}
+        beersDisplay={beersDisplay}
+      />
     </Layout>
   )
 }
@@ -69,6 +74,16 @@ export const beersTempQuery = graphql`
                 }
               }
             }
+          }
+        }
+      }
+    }
+
+    beersDisplay: wpPage(id: { eq: $id }) {
+      template {
+        ... on WpTemplate_Beers {
+          beersTemplate {
+            beersDisplayType
           }
         }
       }
