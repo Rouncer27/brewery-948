@@ -55,18 +55,21 @@ const getData = graphql`
 
 const BeersList = ({ beersDisplay }) => {
   const postsData = useStaticQuery(getData)
-  const beers = postsData.beers.edges
+  // const beers = postsData.beers.edges
+  let beers = []
+  postsData.beers.edges.forEach(item => beers.push(item))
   const quotes = postsData.quotes.edges
   const [beersDisplayed, setBeersDisplay] = useState([])
 
   useEffect(() => {
+    setBeersDisplay([])
     const quoteOneInsert = getRandomRum(0, beers.length - 1)
     const taproomInsert = getRandomRum(0, beers.length - 1)
     const quoteOneIndex = getRandomRum(0, quotes.length - 1)
     beers.splice(quoteOneInsert, 0, quotes[quoteOneIndex])
     beers.splice(taproomInsert, 0, { taproomLink: true })
     setBeersDisplay(beers)
-  }, [])
+  }, [postsData.beers.edges])
 
   return (
     <DivStyled>
